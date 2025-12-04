@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DariART — Contact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--brand:#2f6a4b;--shadow:0 10px 25px rgba(0,0,0,.08)}
+    body{margin:0;background:#fff9f7;color:#1f2725;font-family:Inter,system-ui}
+    .container{max-width:860px;margin:auto;padding:28px 20px}
+    header{display:flex;justify-content:space-between;align-items:center}
+    a{color:var(--brand);text-decoration:none;font-weight:600}
+    h1{font-family:Playfair Display,serif;margin:10px 0 22px;font-size:clamp(26px,3.2vw,36px)}
+    form{background:#fff;border-radius:18px;box-shadow:var(--shadow);padding:22px;display:grid;gap:14px}
+    label{font-weight:600}
+    input,textarea{width:100%;padding:12px 14px;border:1px solid #e7e7e7;border-radius:12px;font:inherit;background:#fff}
+    textarea{min-height:160px;resize:vertical}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    button{border:none;background:var(--brand);color:#fff;font-weight:700;padding:12px 18px;border-radius:999px;cursor:pointer}
+    .muted{color:#55615c}
+    @media (max-width:680px){.row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="index.html">← Home</a>
+      <a href="my-art.html">My art</a>
+    </header>
+
+    <h1>Contact</h1>
+    <p class="muted">Tell me your idea, size, deadline and preferred style — I’ll get back to you shortly.</p>
+
+    <!-- Formspree form -->
+    <form action="https://formspree.io/f/mvgegoko" method="POST">
+      <div class="row">
+        <div>
+          <label for="name">First & Last name</label>
+          <input id="name" name="name" type="text" required />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="_replyto" type="email" required />
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="country">City / Country</label>
+          <input id="country" name="location" type="text" />
+        </div>
+        <div>
+          <label for="subject">Subject</label>
+          <input id="subject" name="subject" type="text" />
+        </div>
+      </div>
+
+      <div>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Describe the artwork you want (theme, colors, size, deadline)…" required></textarea>
+      </div>
+
+      <!-- Optional: allow attachments later by email reply -->
+      <input type="hidden" name="_subject" value="New inquiry from DariART site">
+      <input type="hidden" name="_language" value="en" />
+
+      <button type="submit">Send</button>
+      <p class="muted" style="margin:0">This form is powered by Formspree.</p>
+    </form>
+
+    <footer style="margin-top:28px">
+      <div class="muted">Also find me: 
+        <a href="https://www.instagram.com/wild_and_free_sisters" target="_blank" rel="noopener">Instagram</a> ·
+        <a href="https://www.youtube.com/@dariART2002" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
