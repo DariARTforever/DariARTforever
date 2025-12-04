@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DariART — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Caveat:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fff9f7; --fg:#1f2725; --muted:#55615c; --brand:#2f6a4b; --brand-2:#8fb59f;
+      --card:#ffffff; --shadow:0 10px 25px rgba(0,0,0,.08);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{opacity:.85}
+    .container{max-width:1100px;margin:auto;padding:0 20px}
+    header{position:sticky;top:0;background:rgba(255,255,255,.9);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid #eee;z-index:40}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700}
+    .brand img{height:32px;width:32px;object-fit:cover;border-radius:50%}
+    .nav a{margin-left:18px;font-weight:600}
+    .lang{margin-left:22px;display:inline-flex;gap:10px;font-size:14px;color:var(--muted)}
+    .hero{position:relative;min-height:68vh;display:grid;place-items:center;text-align:center;overflow:hidden}
+    .hero::before{
+      content:"";position:absolute;inset:0;
+      background:url("images/dariart.jpeg") center/cover no-repeat;
+      filter:brightness(.75);
+    }
+    .hero > .content{position:relative;color:#fff;padding:40px 18px}
+    .kalligraf{font-family:Caveat,cursive;font-weight:600;font-size:clamp(44px,6vw,76px);letter-spacing:.5px}
+    .sub{font-family:Playfair Display,serif;font-size:clamp(16px,2.1vw,20px);opacity:.95;margin-top:8px}
+    .cta{display:flex;gap:14px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+    .btn{border:none;border-radius:999px;padding:12px 20px;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
+    .btn-primary{background:var(--brand);color:#fff}
+    .btn-ghost{background:#ffffff;color:var(--brand)}
+    section{padding:64px 0}
+    h2{font-family:Playfair Display,serif;font-weight:700;margin:0 0 22px;font-size:clamp(28px,3.2vw,38px)}
+    .muted{color:var(--muted)}
+    .split{display:grid;grid-template-columns:1.2fr .8fr;gap:26px;align-items:center}
+    .split img{width:100%;border-radius:var(--radius);box-shadow:var(--shadow);object-fit:cover}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+    /* carousel */
+    .carousel{position:relative}
+    .track{display:grid;grid-auto-flow:column;grid-auto-columns:100%;overflow:hidden;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .slide{position:relative;height:460px}
+    .slide img{width:100%;height:100%;object-fit:cover;display:block}
+    .car-btn{position:absolute;top:50%;transform:translateY(-50%);background:#fff;border:none;border-radius:999px;padding:10px 14px;box-shadow:var(--shadow);cursor:pointer}
+    .car-btn.prev{left:10px}.car-btn.next{right:10px}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .steps .card h3{margin:0 0 6px}
+    .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .gallery-grid img{width:100%;height:340px;object-fit:cover;border-radius:14px;box-shadow:var(--shadow)}
+    footer{padding:40px 0;border-top:1px solid #eee;font-size:14px}
+    .social{display:flex;gap:16px}
+    .icon{width:26px;height:26px;display:inline-grid;place-items:center;border-radius:50%;background:#111;color:#fff}
+    @media (max-width:880px){
+      .split{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr}
+      .slide{height:360px}
+      .gallery-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <img src="images/daria.jpeg" alt="DariART logo">
+      <span>DariART</span>
+    </div>
+    <nav>
+      <a href="my-art.html" data-i="navMyArt">My art</a>
+      <a href="contact.html" data-i="navContact">Contact</a>
+      <span class="lang">EN · <a href="#" id="langRu">RU</a></span>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="content">
+      <div class="kalligraf" data-i="heroTitle">Discover DariART</div>
+      <div class="sub" data-i="heroSub">Custom paintings & originals inspired by your stories</div>
+      <div class="cta">
+        <a class="btn btn-ghost" href="#originals" data-i="btnExplore">Explore originals</a>
+        <a class="btn btn-primary" href="contact.html" data-i="btnCustom">Create your custom art</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORIGINALS CAROUSEL -->
+  <section id="originals" class="container">
+    <h2 data-i="secOriginals">Original paintings</h2>
+    <p class="muted" style="text-align:center;margin:-6px 0 18px" data-i="hintSwipe">
+      Swipe or use arrows to browse.
+    </p>
+    <div class="carousel">
+      <div class="track" id="track1">
+        <!-- Put ANY of your works here. Files live in images/ . Nothing except cropping is ever changed. -->
+        <figure class="slide"><img src="images/wild call.jpeg" alt=""></figure>
+        <figure class="slide"><img src="images/pink girl.jpeg" alt=""></figure>
+        <figure class="slide"><img src="images/mee.jpeg" alt=""></figure>
+        <figure class="slide"><img src="images/dancing in the rain.jpeg" alt=""></figure>
+        <figure class="slide"><img src="images/winter.jpeg" alt=""></figure>
+        <figure class="slide"><img src="images/eyes.jpeg" alt=""></figure>
+        <figure class="slide"><img src="images/i need you.jpeg" alt=""></figure>
+      </div>
+      <button class="car-btn prev" data-to="track1">‹</button>
+      <button class="car-btn next" data-to="track1">›</button>
+    </div>
+    <div style="text-align:center;margin-top:18px">
+      <a class="btn btn-primary" href="contact.html" data-i="btnRequest">Request custom art</a>
+    </div>
+  </section>
+
+  <!-- ABOUT / CTA -->
+  <section class="container">
+    <div class="split">
+      <div class="card">
+        <h2 data-i="secMeaning">Looking for a meaningful custom creation?</h2>
+        <p class="muted" data-i="secMeaningText">
+          Tell me about a person, a memory, a place you love — I’ll design a piece that speaks your language.
+        </p>
+        <div class="cta">
+          <a class="btn btn-primary" href="contact.html" data-i="btnTalk">Let’s talk</a>
+          <a class="btn btn-ghost" href="#how" data-i="btnHow">How it works</a>
+        </div>
+      </div>
+      <img src="images/about.jpeg" alt="Daria at work">
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="container">
+    <h2 data-i="secHow">How it works</h2>
+    <div class="steps">
+      <div class="card">
+        <h3 data-i="s1t">1) Brief</h3>
+        <p class="muted" data-i="s1d">You describe the idea, mood, colors, size, deadline.</p>
+      </div>
+      <div class="card">
+        <h3 data-i="s2t">2) Sketch</h3>
+        <p class="muted" data-i="s2d">I propose composition & palette, and we approve it together.</p>
+      </div>
+      <div class="card">
+        <h3 data-i="s3t">3) Painting</h3>
+        <p class="muted" data-i="s3d">I create the final work and arrange delivery or pickup.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WATERCOLOR (compact carousel) -->
+  <section class="container">
+    <h2>Watercolor works</h2>
+    <div class="carousel">
+      <div class="track" id="track2">
+        <figure class="slide"><img src="images/гордость и преду.jpeg" alt=""></figure>
+        <figure class="slide"><img src="images/мавка.jpeg" alt=""></figure>
+        <figure class="slide"><img src="images/ассоль.jpeg" alt=""></figure>
+        <figure class="slide"><img src="images/пара.jpeg" alt=""></figure>
+        <figure class="slide"><img src="images/индеец.jpeg" alt=""></figure>
+        <figure class="slide"><img src="images/кореец.jpeg" alt=""></figure>
+        <figure class="slide"><img src="images/она.jpeg" alt=""></figure>
+        <figure class="slide"><img src="images/саша.jpeg" alt=""></figure>
+        <figure class="slide"><img src="images/1.jpeg" alt=""></figure>
+        <figure class="slide"><img src="images/2.jpeg" alt=""></figure>
+        <figure class="slide"><img src="images/3.jpeg" alt=""></figure>
+      </div>
+      <button class="car-btn prev" data-to="track2">‹</button>
+      <button class="car-btn next" data-to="track2">›</button>
+    </div>
+  </section>
+
+  <!-- PENCIL PORTRAITS (uses YOUR file names exactly as you asked) -->
+  <section class="container">
+    <h2>Pencil portraits & more</h2>
+    <div class="gallery-grid">
+      <img src="images/WhatsApp Image 2025-11-30 at 10.20.14 (1).jpeg" alt="">
+      <img src="images/WhatsApp Image 2025-11-30 at 10.20.14 (2).jpeg" alt="">
+      <img src="images/WhatsApp Image 2025-11-30 at 10.20.14 (3).jpeg" alt="">
+      <img src="images/WhatsApp Image 2025-11-30 at 10.20.14.jpeg" alt="">
+      <img src="images/WhatsApp Image 2025-11-30 at 10.20.16 (1).jpeg" alt="">
+      <img src="images/WhatsApp Image 2025-11-30 at 10.20.16.jpeg" alt="">
+      <img src="images/WhatsApp Image 2025-11-30 at 10.20.17.jpeg" alt="">
+      <img src="images/джигит.jpeg" alt="">
+      <img src="images/жен.jpeg" alt="">
+      <img src="images/наст.jpeg" alt="">
+    </div>
+  </section>
+
+  <!-- EXHIBITIONS -->
+  <section class="container">
+    <h2>Exhibitions</h2>
+    <img src="images/exhibitiom.jpeg" alt="Exhibition" style="width:100%;height:420px;object-fit:cover;border-radius:18px;box-shadow:var(--shadow)">
+    <div style="text-align:center;margin-top:18px">
+      <a class="btn btn-primary" href="contact.html">Please, let me know</a>
+    </div>
+  </section>
+
+  <!-- FINAL PROMO -->
+  <section class="container" style="text-align:center">
+    <h2>More of my art</h2>
+    <a href="https://www.youtube.com/@dariART2002" target="_blank" rel="noopener">
+      <img src="images/яяяя.jpeg" alt="See more on YouTube" style="width:100%;max-width:560px;height:420px;object-fit:cover;border-radius:18px;box-shadow:var(--shadow)">
+    </a>
+  </section>
+</main>
+
+<footer>
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+    <div class="muted">© DariART</div>
+    <div class="social">
+      <a class="icon" title="Instagram" href="https://www.instagram.com/wild_and_free_sisters" target="_blank" rel="noopener"></a>
+      <a class="icon" title="YouTube" href="https://www.youtube.com/@dariART2002" target="_blank" rel="noopener">▶</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // tiny carousel
+  document.querySelectorAll('.car-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const id = btn.dataset.to, track = document.getElementById(id);
+      const dir = btn.classList.contains('next') ? 1 : -1;
+      track.scrollBy({left: dir*track.clientWidth, behavior:'smooth'});
+    });
+  });
+
+  // simple RU toggle (static page text only)
+  const RU = {
+    navMyArt:"Мои работы", navContact:"Контакты",
+    heroTitle:"Откройте DariART", heroSub:"Картины на заказ и оригиналы по вашим историям",
+    btnExplore:"Посмотреть оригиналы", btnCustom:"Заказать картину",
+    secOriginals:"Оригинальные работы", hintSwipe:"Листайте слайды стрелками или свайпом.",
+    btnRequest:"Заказать индивидуальную работу",
+    secMeaning:"Ищете осмысленный персональный арт?",
+    secMeaningText:"Расскажите о человеке, воспоминании или месте — я создам работу, говорящую вашим языком.",
+    btnTalk:"Обсудить идею", btnHow:"Как это работает",
+    secHow:"Как это работает", s1t:"1) Бриф", s1d:"Опишите идею, настроение, цвета, размер и сроки.",
+    s2t:"2) Эскиз", s2d:"Предложу композицию и палитру — утвердим вместе.",
+    s3t:"3) Картина", s3d:"Пишу финальную работу и организую доставку."
+  };
+  document.getElementById('langRu').addEventListener('click', (e)=>{
+    e.preventDefault();
+    document.querySelectorAll('[data-i]').forEach(el=>{
+      const key = el.getAttribute('data-i');
+      if(RU[key]) el.textContent = RU[key];
+    });
+  });
+</script>
+</body>
+</html>
