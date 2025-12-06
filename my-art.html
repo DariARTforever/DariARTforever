@@ -1,76 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Art - Daria Sirchenko</title>
-  <link rel="stylesheet" href="style.css?v=3">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daria Sirchenko — My Art</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="images/logo.jpeg" />
 </head>
 <body>
-  <header>
-    <div class="header-inner wrapper">
-      <div class="logo">Daria Sirchenko</div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+<header class="topbar">
+  <a class="brand" href="index.html">Daria Sirchenko</a>
+  <nav class="nav">
+    <strong>My Art</strong>
+    <a href="contact.html">Contact</a>
+    <span class="lang"><a href="#">RU</a> / <strong>EN</strong></span>
+  </nav>
+</header>
 
-  <main class="wrapper">
-    <h1>Click on any of the pictures to see more of my art</h1>
+<main class="container">
+  <h1>Click on any of the pictures to see more of my art</h1>
 
-    <section class="grid">
-      <div class="card">
-        <a href="https://www.instagram.com/explore/tags/dariart_paintings/" target="_blank">
-          <img src="images/tile_paintings.jpg" alt="Paintings">
-          <div class="caption">Paintings</div>
-        </a>
-      </div>
+  <div class="tiles">
+    <a class="tile" id="paintings" href="https://www.instagram.com/explore/tags/dariart_paintings" target="_blank" rel="noopener">
+      <img src="images/tile_paintings.jpeg" alt="Paintings">
+      <span>Paintings</span>
+    </a>
+    <a class="tile" id="portraits" href="https://www.instagram.com/explore/tags/dariart_pencil" target="_blank" rel="noopener">
+      <img src="images/tile_portraits.jpeg" alt="Portraits">
+      <span>Portraits</span>
+    </a>
+    <a class="tile" id="watercolor" href="https://www.instagram.com/explore/tags/dariart_watercolor" target="_blank" rel="noopener">
+      <img src="images/tile_watercolor.jpeg" alt="Watercolor">
+      <span>Watercolor</span>
+    </a>
+    <a class="tile" id="sketches" href="https://www.instagram.com/explore/tags/dariart_sketches" target="_blank" rel="noopener">
+      <img src="images/tile_sketches.jpeg" alt="Sketches & more">
+      <span>Sketches &amp; more</span>
+    </a>
+  </div>
 
-      <div class="card">
-        <a href="https://www.instagram.com/explore/tags/dariart_pencil/" target="_blank">
-          <img src="images/tile_portraits.jpg" alt="Portraits">
-          <div class="caption">Portraits</div>
-        </a>
-      </div>
+  <p class="center muted">
+    To see my full portfolio, click here:
+    <a href="https://www.instagram.com/daria_r_t?igsh=MXZreHhjd2ZrYXBkNw==" target="_blank" rel="noopener">
+      @daria_r_t
+    </a>
+  </p>
+</main>
 
-      <div class="card">
-        <a href="https://www.instagram.com/explore/tags/dariart_watercolor/" target="_blank">
-          <img src="images/tile_watercolor.jpg" alt="Watercolor">
-          <div class="caption">Watercolor</div>
-        </a>
-      </div>
-
-      <div class="card">
-        <a href="https://www.instagram.com/explore/tags/dariart_sketches/" target="_blank">
-          <img src="images/tile_sketches.jpg" alt="Sketches">
-          <div class="caption">Sketches & more</div>
-        </a>
-      </div>
-    </section>
-
-    <p class="portfolio-link">
-      To see my full portfolio, click here:
-      <a href="https://www.instagram.com/daria_r_t?igsh=MXZreHhjd2ZrYXBkNw==" target="_blank">
-        @daria_r_t
-      </a>
-    </p>
-  </main>
-
-  <footer>
-    <div class="foot-inner wrapper">
-      <p>© 2025 Daria Sirchenko</p>
-      <div class="socials">
-        <a href="https://www.instagram.com/wild_and_free_sisters" target="_blank">
-          <img src="images/logo.jpg" alt="Instagram" />
-        </a>
-        <a href="https://www.youtube.com/@dariART2002" target="_blank">
-          <img src="images/more_art.jpg" alt="YouTube" />
-        </a>
-      </div>
-    </div>
-  </footer>
+<footer class="footer">
+  <a class="icon" href="https://www.instagram.com/wild_and_free_sisters" target="_blank" aria-label="Instagram" rel="noopener">
+    <svg viewBox="0 0 24 24" width="24" height="24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm6.25-.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
+  </a>
+  <a class="icon" href="https://www.youtube.com/@dariART2002" target="_blank" aria-label="YouTube" rel="noopener">
+    <svg viewBox="0 0 24 24" width="26" height="26"><path d="M23 7.5a4 4 0 0 0-3-3C18.2 4 12 4 12 4s-6.2 0-8 .5a4 4 0 0 0-3 3A41 41 0 0 0 1 12a41 41 0 0 0 0 4.5 4 4 0 0 0 3 3c1.8.5 8 .5 8 .5s6.2 0 8-.5a4 4 0 0 0 3-3A41 41 0 0 0 23 12a41 41 0 0 0 0-4.5zM10 15.5V8.5l6 3.5-6 3.5z"/></svg>
+  </a>
+</footer>
 </body>
 </html>
 
