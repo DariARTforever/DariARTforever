@@ -1,55 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - Daria Sirchenko</title>
-  <link rel="stylesheet" href="style.css?v=3">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Daria Sirchenko</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="images/logo.jpeg" />
 </head>
 <body>
-  <header>
-    <div class="header-inner wrapper">
-      <div class="logo">Daria Sirchenko</div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="my-art.html">My Art</a>
-      </nav>
+<header class="topbar">
+  <a class="brand" href="index.html">Daria Sirchenko</a>
+  <nav class="nav">
+    <a href="my-art.html">My Art</a>
+    <strong>Contact</strong>
+    <span class="lang"><a href="#">RU</a> / <strong>EN</strong></span>
+  </nav>
+</header>
+
+<main class="container narrow">
+  <h1>Contact</h1>
+  <p>Tell me about your commission, collaboration, or exhibition.</p>
+
+  <form class="contact-form" action="https://formspree.io/f/mvgegoko" method="POST">
+    <div class="grid">
+      <label>
+        First name
+        <input type="text" name="first_name" required />
+      </label>
+      <label>
+        Last name
+        <input type="text" name="last_name" />
+      </label>
     </div>
-  </header>
 
-  <main class="wrapper">
-    <section class="contact-section">
-      <h1>Contact me</h1>
-      <p>If you’d like to order a portrait, discuss a collaboration, or simply ask a question — feel free to reach out below.</p>
+    <label>
+      Email
+      <input type="email" name="email" required />
+    </label>
 
-      <form action="https://formspree.io/f/mvgegoko" method="POST" class="contact-form">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required placeholder="Your name">
+    <label>
+      Message
+      <textarea name="message" rows="6" placeholder="Your request or question..." required></textarea>
+    </label>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" name="_replyto" required placeholder="Your email">
+    <button class="btn" type="submit">Send</button>
+  </form>
+</main>
 
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="6" required placeholder="Write your message here..."></textarea>
-
-        <button type="submit" class="btn">Send message</button>
-      </form>
-    </section>
-  </main>
-
-  <footer>
-    <div class="foot-inner wrapper">
-      <p>© 2025 Daria Sirchenko</p>
-      <div class="socials">
-        <a href="https://www.instagram.com/wild_and_free_sisters" target="_blank">
-          <img src="images/logo.jpg" alt="Instagram" />
-        </a>
-        <a href="https://www.youtube.com/@dariART2002" target="_blank">
-          <img src="images/more_art.jpg" alt="YouTube" />
-        </a>
-      </div>
-    </div>
-  </footer>
+<footer class="footer">
+  <a class="icon" href="https://www.instagram.com/wild_and_free_sisters" target="_blank" aria-label="Instagram" rel="noopener">
+    <svg viewBox="0 0 24 24" width="24" height="24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm6.25-.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
+  </a>
+  <a class="icon" href="https://www.youtube.com/@dariART2002" target="_blank" aria-label="YouTube" rel="noopener">
+    <svg viewBox="0 0 24 24" width="26" height="26"><path d="M23 7.5a4 4 0 0 0-3-3C18.2 4 12 4 12 4s-6.2 0-8 .5a4 4 0 0 0-3 3A41 41 0 0 0 1 12a41 41 0 0 0 0 4.5 4 4 0 0 0 3 3c1.8.5 8 .5 8 .5s6.2 0 8-.5a4 4 0 0 0 3-3A41 41 0 0 0 23 12a41 41 0 0 0 0-4.5zM10 15.5V8.5l6 3.5-6 3.5z"/></svg>
+  </a>
+</footer>
 </body>
 </html>
-
