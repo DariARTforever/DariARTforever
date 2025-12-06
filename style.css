@@ -100,7 +100,7 @@ a{color:inherit}
   font-size: 1.1em;
   color: #333;
 }
-/* === Цветовая палитра сайта === */
+
 html {
   background-color: #d9c8b4; /* кофейный фон по бокам */
 }
@@ -120,24 +120,53 @@ main, header, footer, section {
 }
 
 
-/* --- кофейные секции (по умолчанию) --- */
+
 section {
   background-color: #d9c8b4;
 }
 
-/* --- светло-бежевые секции (как в примере с yola) --- */
+
 section.beige {
   background-color: #f4ede5;
 }
 
-/* --- белая секция внизу (портрет) --- */
+
 section.white {
   background-color: #ffffff;
 }
 
-/* --- контент выравниваем по центру --- */
+
 section > div, .hero-text, .gallery, .exhibit, .about {
   max-width: 1000px;
   margin: 0 auto;
   padding: 40px 20px;
+}
+
+:root{
+  --page-max: 1200px;      /* можно 1280 если хочешь ещё шире */
+  --page-side: clamp(12px, 4vw, 36px);
+}
+
+
+body header,
+body main,
+body section,
+body footer,
+.page, .container {
+  max-width: var(--page-max) !important;
+  width: min(92%, var(--page-max)) !important; /* существенно уже */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: var(--page-side) !important;
+  padding-right: var(--page-side) !important;
+  box-sizing: border-box !important;
+}
+
+
+.hero, .hero img, .strip img, .slider, .slider img {
+  border-radius: 10px;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
 }
