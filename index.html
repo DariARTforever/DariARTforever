@@ -1,170 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Daria Sirchenko — Art</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="images/logo.jpeg" />
-  <meta name="description" content="Discover paintings, portraits, watercolor and sketches by Daria Sirchenko." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DariART</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header>
+    <h1><a href="index.html">Daria Sirchenko</a></h1>
+    <nav>
+      <a href="my-art.html">My Art</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-<header class="topbar">
-  <a class="brand" href="index.html">Daria Sirchenko</a>
-  <nav class="nav">
-    <a href="my-art.html">My Art</a>
-    <a href="contact.html">Contact</a>
-    <span class="lang">
-      <a href="#" aria-label="Switch to Russian">RU</a> /
-      <strong>EN</strong>
-    </span>
-  </nav>
-</header>
+  <main>
+    <!-- Hero Section (кофейный фон) -->
+    <section class="hero">
+      <img src="images/hero_bg.jpeg" alt="DariART logo" class="hero-img">
+      <div class="hero-text centered">
+        <h1>Welcome to my art world</h1>
+        <p>Discover my paintings, portraits, sketches and more</p>
+      </div>
+    </section>
 
-<main>
+    <!-- About Section (бежевый фон) -->
+    <section class="about beige">
+      <div class="about-content">
+        <h2>Looking for a meaningful, custom creation?</h2>
+        <p>
+          Daria crafts personalized artworks that capture your unique story and infuse them
+          with genuine emotion — each piece designed exclusively for you.
+        </p>
+        <div class="about-buttons">
+          <a href="contact.html" class="btn primary">Request Custom Art</a>
+          <a href="my-art.html" class="btn secondary">How It Works</a>
+        </div>
+      </div>
+      <div class="about-media">
+        <img src="images/about.jpeg" alt="Daria by the tree">
+      </div>
+    </section>
 
-   <!-- Hero -->
-  <section class="hero overlay">
-    <img src="images/hero_bg.jpeg" alt="DariART logo background" class="hero-img">
-    <div class="hero-text centered">
-      <h1>Welcome to my art world</h1>
-      <p>Discover my paintings, portraits, sketches and more</p>
-    </div>
-  </section>
+    <!-- Gallery Section (кофейный фон) -->
+    <section class="gallery">
+      <h2>Original Paintings</h2>
+      <p>
+        Discover captivating creations by Daria — a self-taught artist from Russia,
+        where passion and authenticity shine with every brushstroke.
+      </p>
+      <div class="gallery-row">
+        <img src="images/paint_01.jpeg" alt="Painting 1">
+        <img src="images/paint_02.jpeg" alt="Painting 2">
+        <img src="images/paint_03.jpeg" alt="Painting 3">
+        <img src="images/paint_04.jpeg" alt="Painting 4">
+      </div>
+    </section>
 
+    <!-- How It Works Section (бежевый фон) -->
+    <section class="how-it-works beige">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>01.</h3>
+          <p>Contact me via email or phone to share your idea</p>
+        </div>
+        <div class="step">
+          <h3>02.</h3>
+          <p>Discuss details like subject, size, and color preferences</p>
+        </div>
+        <div class="step">
+          <h3>03.</h3>
+          <p>Receive a personalized artwork that resonates with you</p>
+        </div>
+      </div>
+    </section>
 
-  <!-- About -->
-  <section class="about">
-    <div class="about-text">
-      <h2>About my art</h2>
-      <p>I create portraits and illustrations in pencil, watercolor and oil. Each piece reflects emotion, light, and quiet strength.</p>
-    </div>
-    <div class="about-media">
-      <img src="images/about.jpeg" alt="Pencil detail" loading="lazy">
-    </div>
-  </section>
+    <!-- Final Section (белый фон) -->
+    <section class="exhibit white">
+      <h2>Exhibition</h2>
+      <img src="images/exhibition.jpeg" alt="Daria portrait">
+    </section>
+  </main>
 
-  <!-- Paintings carousel -->
-  <section class="gallery">
-    <div class="gallery-head">
-      <h3>Paintings</h3>
-      <a class="see-all" href="my-art.html#paintings">See all</a>
-    </div>
-    <div class="rail" id="rail-paint">
-      <!-- paint_01 … paint_14 -->
-      <img src="images/paint_01.jpeg" alt="">
-      <img src="images/paint_02.jpeg" alt="">
-      <img src="images/paint_03.jpeg" alt="">
-      <img src="images/paint_04.jpeg" alt="">
-      <img src="images/paint_05.jpeg" alt="">
-      <img src="images/paint_06.jpeg" alt="">
-      <img src="images/paint_07.jpeg" alt="">
-      <img src="images/paint_08.jpeg" alt="">
-      <img src="images/paint_09.jpeg" alt="">
-      <img src="images/paint_10.jpeg" alt="">
-      <img src="images/paint_11.jpeg" alt="">
-      <img src="images/paint_12.jpeg" alt="">
-      <img src="images/paint_13.jpeg" alt="">
-      <img src="images/paint_14.jpeg" alt="">
-    </div>
-    <div class="rail-controls">
-      <button onclick="slide('rail-paint',-1)">‹</button>
-      <button onclick="slide('rail-paint', 1)">›</button>
-    </div>
-  </section>
-
-  <!-- Watercolor carousel -->
-  <section class="gallery">
-    <div class="gallery-head">
-      <h3>Watercolor</h3>
-      <a class="see-all" href="my-art.html#watercolor">See all</a>
-    </div>
-    <div class="rail" id="rail-wc">
-      <!-- wc_01 … wc_11 -->
-      <img src="images/wc_01.jpeg" alt="">
-      <img src="images/wc_02.jpeg" alt="">
-      <img src="images/wc_03.jpeg" alt="">
-      <img src="images/wc_04.jpeg" alt="">
-      <img src="images/wc_05.jpeg" alt="">
-      <img src="images/wc_06.jpeg" alt="">
-      <img src="images/wc_07.jpeg" alt="">
-      <img src="images/wc_08.jpeg" alt="">
-      <img src="images/wc_09.jpeg" alt="">
-      <img src="images/wc_10.jpeg" alt="">
-      <img src="images/wc_11.jpeg" alt="">
-    </div>
-    <div class="rail-controls">
-      <button onclick="slide('rail-wc',-1)">‹</button>
-      <button onclick="slide('rail-wc', 1)">›</button>
-    </div>
-  </section>
-
-  <!-- Pencil portraits carousel -->
-  <section class="gallery">
-    <div class="gallery-head">
-      <h3>Pencil portraits & more</h3>
-      <a class="see-all" href="my-art.html#portraits">See all</a>
-    </div>
-    <div class="rail" id="rail-pencil">
-      <!-- 7 WhatsApp + 4 именованных -->
-      <img src="images/WhatsApp Image 2025-11-30 at 10.20.14 (1).jpeg" alt="">
-      <img src="images/WhatsApp Image 2025-11-30 at 10.20.14 (2).jpeg" alt="">
-      <img src="images/WhatsApp Image 2025-11-30 at 10.20.14 (3).jpeg" alt="">
-      <img src="images/WhatsApp Image 2025-11-30 at 10.20.14.jpeg" alt="">
-      <img src="images/WhatsApp Image 2025-11-30 at 10.20.16 (1).jpeg" alt="">
-      <img src="images/WhatsApp Image 2025-11-30 at 10.20.16.jpeg" alt="">
-      <img src="images/WhatsApp Image 2025-11-30 at 10.20.17.jpeg" alt="">
-      <img src="images/джигит.jpeg" alt="">
-      <img src="images/жен.jpeg" alt="">
-      <img src="images/наст.jpeg" alt="">
-      <img src="images/пастушка.jpeg" alt="">
-    </div>
-    <div class="rail-controls">
-      <button onclick="slide('rail-pencil',-1)">‹</button>
-      <button onclick="slide('rail-pencil', 1)">›</button>
-    </div>
-  </section>
-
-  <!-- Exhibition CTA -->
-  <section class="exhibit">
-    <img src="images/exhibition.jpeg" alt="Exhibition poster">
-    <div class="exhibit-text">
-      <h3>Planning an exhibition?</h3>
-      <p>Let me know about it — I’ll be happy to participate.</p>
-      <a class="btn" href="contact.html">Let me know</a>
-    </div>
-  </section>
-
-  <!-- More of my art -->
-  <section class="more-art">
-    <a href="https://www.youtube.com/@dariART2002" target="_blank" rel="noopener">
-      <img src="images/more_art.jpeg" alt="Tap to see more of my art">
-    </a>
-    <p>Tap the picture to see more of my art.</p>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <a class="icon" href="https://www.instagram.com/wild_and_free_sisters" target="_blank" aria-label="Instagram" rel="noopener">
-    <!-- IG SVG -->
-    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm6.25-.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
-  </a>
-  <a class="icon" href="https://www.youtube.com/@dariART2002" target="_blank" aria-label="YouTube" rel="noopener">
-    <!-- YT SVG -->
-    <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M23 7.5a4 4 0 0 0-3-3C18.2 4 12 4 12 4s-6.2 0-8 .5a4 4 0 0 0-3 3A41 41 0 0 0 1 12a41 41 0 0 0 0 4.5 4 4 0 0 0 3 3c1.8.5 8 .5 8 .5s6.2 0 8-.5a4 4 0 0 0 3-3A41 41 0 0 0 23 12a41 41 0 0 0 0-4.5zM10 15.5V8.5l6 3.5-6 3.5z"/></svg>
-  </a>
-</footer>
-
-<script>
-function slide(id, dir){
-  const el = document.getElementById(id);
-  const step = el.clientWidth * 0.9;
-  el.scrollBy({left: step * dir, behavior: 'smooth'});
-}
-</script>
+  <footer>
+    <p>© 2025 Daria Sirchenko | All rights reserved</p>
+  </footer>
 </body>
 </html>
-
-
