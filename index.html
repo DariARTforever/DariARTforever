@@ -4,83 +4,84 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DariART</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
   <header>
-    <h1><a href="index.html">Daria Sirchenko</a></h1>
-    <nav>
-      <a href="my-art.html">My Art</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <div class="container">
+      <h1><a href="index.html">Daria Sirchenko</a></h1>
+      <nav>
+        <a href="my-art.html">My Art</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <!-- Hero Section (кофейный фон) -->
+    <!-- Hero section -->
     <section class="hero">
-      <img src="images/hero_bg.jpeg" alt="DariART logo" class="hero-img">
-      <div class="hero-text centered">
+      <img src="images/hero_bg.jpeg" alt="DariART logo">
+      <div class="hero-text">
         <h1>Welcome to my art world</h1>
         <p>Discover my paintings, portraits, sketches and more</p>
       </div>
     </section>
 
-    <!-- About Section (бежевый фон) -->
+    <!-- About -->
     <section class="about beige">
-      <div class="about-content">
-        <h2>Looking for a meaningful, custom creation?</h2>
+      <div class="container about-flex">
+        <div class="about-text">
+          <h2>Looking for a meaningful, custom creation?</h2>
+          <p>
+            Daria crafts personalized artworks that capture your unique story and infuse them
+            with genuine emotion — each piece designed exclusively for you.
+          </p>
+          <div class="buttons">
+            <a href="contact.html" class="btn primary">Request Custom Art</a>
+            <a href="my-art.html" class="btn secondary">How It Works</a>
+          </div>
+        </div>
+        <div class="about-photo">
+          <img src="images/about.jpeg" alt="Daria by the tree">
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery coffee">
+      <div class="container">
+        <h2>Original Paintings</h2>
         <p>
-          Daria crafts personalized artworks that capture your unique story and infuse them
-          with genuine emotion — each piece designed exclusively for you.
+          Discover captivating creations by Daria — a self-taught artist from Russia,
+          where passion and authenticity shine with every brushstroke.
         </p>
-        <div class="about-buttons">
-          <a href="contact.html" class="btn primary">Request Custom Art</a>
-          <a href="my-art.html" class="btn secondary">How It Works</a>
-        </div>
-      </div>
-      <div class="about-media">
-        <img src="images/about.jpeg" alt="Daria by the tree">
-      </div>
-    </section>
-
-    <!-- Gallery Section (кофейный фон) -->
-    <section class="gallery">
-      <h2>Original Paintings</h2>
-      <p>
-        Discover captivating creations by Daria — a self-taught artist from Russia,
-        where passion and authenticity shine with every brushstroke.
-      </p>
-      <div class="gallery-row">
-        <img src="images/paint_01.jpeg" alt="Painting 1">
-        <img src="images/paint_02.jpeg" alt="Painting 2">
-        <img src="images/paint_03.jpeg" alt="Painting 3">
-        <img src="images/paint_04.jpeg" alt="Painting 4">
-      </div>
-    </section>
-
-    <!-- How It Works Section (бежевый фон) -->
-    <section class="how-it-works beige">
-      <h2>How It Works</h2>
-      <div class="steps">
-        <div class="step">
-          <h3>01.</h3>
-          <p>Contact me via email or phone to share your idea</p>
-        </div>
-        <div class="step">
-          <h3>02.</h3>
-          <p>Discuss details like subject, size, and color preferences</p>
-        </div>
-        <div class="step">
-          <h3>03.</h3>
-          <p>Receive a personalized artwork that resonates with you</p>
+        <div class="gallery-row">
+          <img src="images/paint_01.jpeg" alt="Painting 1">
+          <img src="images/paint_02.jpeg" alt="Painting 2">
+          <img src="images/paint_03.jpeg" alt="Painting 3">
+          <img src="images/paint_04.jpeg" alt="Painting 4">
         </div>
       </div>
     </section>
 
-    <!-- Final Section (белый фон) -->
+    <!-- How it works -->
+    <section class="how beige">
+      <div class="container">
+        <h2>How It Works</h2>
+        <div class="steps">
+          <div class="step"><h3>01.</h3><p>Contact me via email or phone to share your idea.</p></div>
+          <div class="step"><h3>02.</h3><p>Discuss details like subject, size, and color preferences.</p></div>
+          <div class="step"><h3>03.</h3><p>Receive a personalized artwork that resonates with you.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Exhibition -->
     <section class="exhibit white">
-      <h2>Exhibition</h2>
-      <img src="images/exhibition.jpeg" alt="Daria portrait">
+      <div class="container">
+        <h2>Exhibition</h2>
+        <img src="images/exhibition.jpeg" alt="Daria portrait" class="exhibit-img">
+      </div>
     </section>
   </main>
 
@@ -89,3 +90,4 @@
   </footer>
 </body>
 </html>
+
