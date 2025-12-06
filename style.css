@@ -100,3 +100,43 @@ a{color:inherit}
   font-size: 1.1em;
   color: #333;
 }
+/* === Цветовая палитра сайта === */
+html {
+  background-color: #d9c8b4; /* кофейный фон по бокам */
+}
+
+body {
+  background-color: #d9c8b4; /* общий кофейный фон */
+  display: flex;
+  justify-content: center;
+}
+
+main, header, footer, section {
+  width: 100%;
+  max-width: 1200px;
+  border-radius: 6px;
+  margin: 0 auto 20px auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* --- кофейные секции (по умолчанию) --- */
+section {
+  background-color: #d9c8b4;
+}
+
+/* --- светло-бежевые секции (как в примере с yola) --- */
+section.beige {
+  background-color: #f4ede5;
+}
+
+/* --- белая секция внизу (портрет) --- */
+section.white {
+  background-color: #ffffff;
+}
+
+/* --- контент выравниваем по центру --- */
+section > div, .hero-text, .gallery, .exhibit, .about {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
