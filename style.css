@@ -1,127 +1,101 @@
-/* === Fonts === */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
+/* ===== Base ===== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap');
 
 :root{
-  --coffee:#5b4636;         /* тёплый кофейный */
-  --coffee-700:#4a3a2c;
-  --beige:#efe7dc;          /* бежевый фон секций */
-  --ink:#1d1b18;            /* тёмный для текста */
-  --maxw:1200px;            /* ширина контента */
-  --radius:16px;
+  --coffee:#d9cbb7;
+  --beige:#efe6d8;
+  --ink:#1e1e1e;
+  --muted:#6b6b6b;
+  --accent:#2f6f5e;
+  --accent-2:#856049;
+  --radius:18px;
+  --shadow:0 8px 24px rgba(0,0,0,.08);
+  --maxw:1100px;
+  --gutter:5vw;              /* было ~10–12vw, теперь в 2 раза уже */
 }
 
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:var(--coffee);
   color:var(--ink);
-  background:#e9dfd2; /* лёгкий кофейно-бежевый фон страницы */
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  line-height:1.55;
 }
 
-/* Контейнер по сайту */
-.container{
-  max-width:var(--maxw);
+/* разделы-«панели» по всей странице */
+.panel{padding:56px var(--gutter)}
+.panel--beige{background:var(--beige)}
+.panel--white{background:#fff}
+.container{max-width:var(--maxw);margin:0 auto}
+
+/* ===== HERO (логотип как фон, текст сверху) ===== */
+.hero{
+  padding:72px var(--gutter) 48px;
+  background:var(--coffee);
+}
+.hero-card{
+  position:relative;
+  max-width:min(980px, 92vw);
   margin:0 auto;
-  padding:0 24px;
-}
-
-/* === HERO ===
-   Фон: деревянный логотип. Текст — поверх, без белого блока. */
-.hero{
-  position:relative;
-  height:460px;                       /* при желании 420–520 */
-  max-width:var(--maxw);
-  margin:24px auto 32px;
+  height:64vh;               /* высота блока */
+  min-height:420px;
   border-radius:var(--radius);
-  background:
-    url("images/logo.jpg") center / contain no-repeat,
-    var(--beige);                     /* подложка, чтобы было «как на Yola» */
-  display:flex;
-  align-items:flex-end;               /* текст ниже логотипа */
-  justify-content:center;
   overflow:hidden;
+  box-shadow:var(--shadow);
+  background: #eee url("images/logo.jpg") center/cover no-repeat; /* имя файла не меняем */
 }
-
-/* Внутренний блок текста */
-.hero-inner{
+.hero-overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.0) 35%, rgba(0,0,0,.35) 85%);
+}
+.hero-text{
+  position:absolute; left:50%; bottom:40px; transform:translateX(-50%);
+  width:min(820px, 90%);
   text-align:center;
-  margin-bottom:28px;                 /* насколько опускаем текст */
-  padding:0 16px;
+  color:#fff;
+  text-shadow:0 2px 10px rgba(0,0,0,.35);
 }
-
-/* Заголовок шрифтом как на Yola */
-.hero h1{
-  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+.hero-title{
+  font-family:"Playfair Display", serif;
   font-weight:700;
-  font-size: clamp(32px, 5vw, 56px);
-  line-height:1.1;
-  color:var(--ink);
+  font-size: clamp(28px, 5vw, 42px);
   letter-spacing:.2px;
-  text-shadow: 0 2px 10px rgba(0,0,0,.10);  /* лёгкая читаемость, без подложек */
-  margin:0 0 12px 0;
+  margin:0 0 8px;
 }
-
 .hero-sub{
-  font-size:clamp(14px, 2.2vw, 18px);
-  margin:0 0 18px 0;
-  opacity:.9;
+  font-size: clamp(13px, 1.6vw, 16px);
+  opacity:.95;
+  margin:0 0 16px;
 }
 
-/* Кнопки */
+/* кнопки */
+.btn-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
 .btn{
-  display:inline-block;
-  padding:12px 18px;
-  border-radius:10px;
-  font-weight:600;
-  text-decoration:none;
-  transition:transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease, border-color .15s ease;
-  white-space:nowrap;
+  appearance:none; border:0; cursor:pointer;
+  padding:10px 16px; border-radius:12px;
+  font-weight:600; font-size:15px;
+  transition:transform .06s ease, box-shadow .2s ease, background .2s ease;
+  text-decoration:none; display:inline-block;
 }
+.btn-primary{background:var(--accent); color:#fff; box-shadow:0 6px 14px rgba(47,111,94,.25)}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-ghost{background:rgba(255,255,255,.14); color:#fff; backdrop-filter:saturate(1.2) blur(1px); border:1px solid rgba(255,255,255,.35)}
+.btn-ghost:hover{transform:translateY(-1px)}
 
-.btn-primary{
-  background:var(--coffee);
-  color:#fff;
-  box-shadow:0 6px 16px rgba(91,70,54,.25);
+/* заголовки разделов */
+.section-title{
+  font-family:"Playfair Display", serif;
+  font-weight:700;
+  font-size: clamp(22px, 3.2vw, 30px);
+  margin:0 0 12px;
 }
-.btn-primary:hover{ 
-  transform:translateY(-1px);
-  background:var(--coffee-700);
-  box-shadow:0 8px 18px rgba(91,70,54,.32);
-}
+.section-sub{color:var(--muted); margin:0 0 24px}
 
-.btn-outline{
-  border:2px solid var(--coffee);
-  color:var(--coffee);
-  background:transparent;
-  margin-left:10px;
-}
-.btn-outline:hover{
-  background:var(--coffee);
-  color:#fff;
-  transform:translateY(-1px);
-}
+/* ограничиваем ширину широких картинок/галерей, но оставляем красивую дыхательность */
+.media{border-radius:12px; overflow:hidden; box-shadow:var(--shadow)}
+img{max-width:100%; height:auto; display:block}
 
-/* Чтобы контент ниже шёл не во всю ширину — общая сетка */
-.section{
-  max-width:var(--maxw);
-  margin:0 auto 56px;
-  padding:0 24px;
-}
-
-/* (опционально) если где-то нужен чисто белый блок — добавляй класс */
-.section.white{ background:#fff; border-radius:var(--radius); padding:24px }
-.hero{
-  position:relative;
-  height:460px;
-  max-width:var(--maxw);
-  margin:24px auto 32px;
-  border-radius:var(--radius);
-  background:
-    url("images/logo.jpg") center / contain no-repeat,
-    var(--beige);
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-  overflow:hidden;
-}
+/* футер */
+.footer{padding:40px var(--gutter); font-size:14px; color:var(--muted)}
 
