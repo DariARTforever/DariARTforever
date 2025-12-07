@@ -1,236 +1,324 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Daria Sirchenko — DariART</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DariART — Daria Sirchenko</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --coffee:#d8c5a9;   /* общий фон страницы */
-      --beige:#eadcc5;    /* блоки-секции */
-      --ink:#1b1b1b;
+      --coffee:#d8c1a1;   /* фон страницы */
+      --beige:#efe4cf;    /* секции */
+      --ink:#232421;
       --muted:#6b6b6b;
-      --accent:#24533f;
-      --white:#fff;
-      --max:1100px;       /* ширина контента с «полями» по бокам */
-      --card-h: 360px;    /* высота карточек в ленте */
+      --accent:#1f6b45;   /* зелёная кнопка */
+      --accent-ghost:#e7efe9;
       --radius:18px;
-      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --rail-h:360px;     /* высота карточек в ленте */
+      --gap:18px;
+      --container: min(1100px, 92vw);
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
+
+    *{box-sizing:border-box;}
+    html,body{height:100%;}
     body{
-      background:var(--coffee);
-      color:var(--ink);
+      margin:0;
       font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:var(--coffee);
       line-height:1.55;
     }
+    a{color:inherit;text-decoration:none}
+    .container{width:var(--container); margin-inline:auto;}
 
-    /* шапка */
-    .topbar{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:14px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(120%) blur(6px);
+      background:rgba(216,193,161,.8);
+      border-bottom:1px solid rgba(0,0,0,.06);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 6px;
     }
     .brand{font-family:"Playfair Display", serif; font-weight:700; letter-spacing:.2px}
-    .nav a{
-      color:var(--accent); text-decoration:none; margin-left:18px; font-weight:600;
-    }
-    .nav a:hover{opacity:.8}
+    .nav a{padding:8px 10px; border-radius:10px}
+    .nav a:hover{background:rgba(0,0,0,.06)}
+    .lang{opacity:.8}
 
-    /* герой */
+    /* Hero */
+    .hero-wrap{background:var(--beige); padding:28px 0 40px}
     .hero{
-      max-width:var(--max);
-      margin:24px auto 36px;
-      padding:0 18px;
+      position:relative; border-radius:var(--radius); overflow:hidden;
+      min-height:260px; display:grid; place-items:center;
+      box-shadow:0 10px 30px rgba(0,0,0,.06);
     }
-    .hero-card{
-      position:relative;
-      border-radius:var(--radius);
-      overflow:hidden;
-      height:360px;
-      box-shadow:var(--shadow);
-      background:#ddd url("images/logo.jpg") center/cover no-repeat;
+    .hero img{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:contrast(1) brightness(.98);
+      transform:scale(1.02);
     }
     .hero-overlay{
       position:absolute; inset:0;
-      background:linear-gradient( to bottom, rgba(0,0,0,.05), rgba(0,0,0,.35) 65%, rgba(0,0,0,.45) );
+      background:linear-gradient(180deg, rgba(10,10,10,.35), rgba(10,10,10,.35));
     }
-    .hero-text{
-      position:absolute; left:28px; bottom:28px; right:28px;
-      color:#fff;
-      text-shadow:0 2px 8px rgba(0,0,0,.28);
+    .hero-content{
+      position:relative; text-align:center; color:#fff; padding:22px;
     }
-    .hero-title{
-      font-family:"Playfair Display", serif;
-      font-size: clamp(26px, 4.2vw, 40px);
-      margin:0 0 6px 0;
+    .hero h1{
+      margin:0 0 6px; font-family:"Playfair Display", serif; font-size:clamp(28px, 4vw, 42px); letter-spacing:.3px;
+      text-shadow:0 2px 10px rgba(0,0,0,.35);
     }
-    .hero-sub{opacity:.92; margin-bottom:14px; font-size:14px}
+    .sub{opacity:.95; font-size:14px; margin-bottom:14px}
+    .btns{display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
     .btn{
-      display:inline-block; border:0; border-radius:999px; padding:10px 16px;
-      font-weight:700; font-size:14px; cursor:pointer; text-decoration:none;
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:11px 15px; border-radius:999px; font-weight:600; font-size:14px; border:1px solid transparent; cursor:pointer;
     }
-    .btn-primary{background:var(--accent); color:#fff}
-    .btn-ghost{background:rgba(255,255,255,.2); color:#fff; backdrop-filter:blur(2px); border:1px solid rgba(255,255,255,.35)}
-    .btn + .btn{margin-left:10px}
+    .btn.primary{background:var(--accent); color:#fff;}
+    .btn.ghost{background:transparent; color:#fff; border-color:rgba(255,255,255,.55); }
+    .btn.ghost:hover{background:rgba(255,255,255,.08)}
 
-    /* секции */
-    section{padding:42px 0; background:var(--beige)}
-    .section-inner{max-width:var(--max); margin:0 auto; padding:0 18px}
-    h2{
-      font-family:"Playfair Display", serif; font-weight:700;
-      font-size: clamp(22px, 3.6vw, 30px); margin:0 0 6px 0;
-    }
-    .lead{color:var(--muted); margin:0 0 16px}
+    /* Sections */
+    section{padding:52px 0; background:var(--beige);}
+    section + section{border-top:1px solid rgba(0,0,0,.05)}
+    h2{font-family:"Playfair Display", serif; font-size: clamp(22px,3vw,28px); margin:0 0 6px}
+    .lead{color:var(--muted); font-size:14.5px; margin:0 0 18px}
 
-    /* ленты */
-    .strip{
-      position:relative;
-      overflow-x:auto;
-      white-space:nowrap;
-      scrollbar-width:thin;
-      background:var(--white);
+    /* Carousel (scroll snap + arrows) */
+    .rail-wrap{position:relative}
+    .rail{
+      display:flex; gap:var(--gap);
+      overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding:var(--gap);
+      padding:var(--gap);
       border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:14px;
+      background:#fff; box-shadow:0 8px 24px rgba(0,0,0,.06);
     }
-    .strip figure{
-      display:inline-block; margin:0 10px 0 0; background:#f7f7f7;
-      border-radius:14px; overflow:hidden;
+    .rail::-webkit-scrollbar{height:10px}
+    .rail::-webkit-scrollbar-thumb{background:#ddd; border-radius:10px}
+    .card{
+      flex:0 0 auto; width: calc((var(--container) - var(--gap)*4)/3);
+      height:var(--rail-h); border-radius:14px; overflow:hidden; scroll-snap-align:start; background:#f7f7f7;
+      display:grid; place-items:center;
     }
-    .strip img{
-      height:var(--card-h); width:auto; display:block;
-    }
-    .strip figure:last-child{margin-right:0}
+    .card img{width:100%; height:100%; object-fit:cover; display:block}
 
-    /* белый блок внизу */
-    .white{background:#fff}
-    .cta{
-      display:flex; flex-wrap:wrap; align-items:center; gap:18px;
-      justify-content:space-between;
+    .arrow{
+      position:absolute; top:50%; translate:0 -50%;
+      width:40px; height:40px; border-radius:50%;
+      display:grid; place-items:center; background:rgba(255,255,255,.92);
+      border:1px solid rgba(0,0,0,.08); box-shadow:0 6px 16px rgba(0,0,0,.08);
+      cursor:pointer; user-select:none;
     }
-    .cta h3{font-family:"Playfair Display", serif; font-size: clamp(20px,3.4vw,26px); margin:0}
-    .actions .btn{font-size:15px}
-    footer{padding:28px 0; text-align:center; color:var(--muted)}
-    @media (max-width:760px){
-      :root{ --card-h: 260px; }
+    .arrow:hover{background:#fff}
+    .arrow.left{left:-14px}
+    .arrow.right{right:-14px}
+
+    /* Ready / CTA */
+    .cta{background:var(--beige)}
+    .cta-inner{
+      display:grid; grid-template-columns:1.2fr .8fr; gap:24px; align-items:center;
+    }
+    .cta-card{background:#fff; border-radius:16px; padding:22px; box-shadow:0 8px 24px rgba(0,0,0,.06)}
+    .cta h3{font-family:"Playfair Display", serif; margin:0 0 10px}
+    .cta p{margin:0 0 16px; color:var(--muted)}
+    .cta-img{
+      border-radius:16px; overflow:hidden; background:#fff;
+    }
+    .cta-img a{display:block}
+    .cta-img img{width:100%; height:100%; object-fit:cover; display:block}
+
+    /* Footer */
+    footer{background:var(--beige); padding:28px 0; border-top:1px solid rgba(0,0,0,.08)}
+    .foot{display:flex; align-items:center; justify-content:space-between; gap:18px; font-size:14px}
+    .icons{display:flex; gap:12px}
+    .icon{width:28px; height:28px; display:grid; place-items:center; border-radius:50%; background:#fff; border:1px solid rgba(0,0,0,.08)}
+    .icon svg{width:16px; height:16px}
+
+    /* White bottom section with your portrait */
+    .more{background:#fff; padding:40px 0}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      :root{ --rail-h:300px; }
+      .card{ width: calc((var(--container) - var(--gap)*3)/2); }
+      .cta-inner{grid-template-columns:1fr; }
+      .arrow.left{left:2px} .arrow.right{right:2px}
+    }
+    @media (max-width: 580px){
+      :root{ --rail-h:250px; }
+      .card{ width: calc(var(--container) - var(--gap)*2); }
     }
   </style>
 </head>
 <body>
 
-  <!-- ШАПКА -->
-  <header class="topbar">
-    <div class="brand">Daria Sirchenko</div>
-    <nav class="nav">
-      <a href="my-art.html">My Art</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+  <!-- header -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="./">Daria Sirchenko</a>
+      <nav>
+        <a href="my-art.html">My Art</a>
+        <a href="contact.html">Contact</a>
+        <a class="lang" href="?lang=ru" title="Русская версия">RU</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- ГЕРОЙ -->
-  <div class="hero">
-    <div class="hero-card">
-      <div class="hero-overlay"></div>
-      <div class="hero-text">
-        <h1 class="hero-title">Discover DariART</h1>
-        <div class="hero-sub">Original paintings, portraits, and personalized artwork</div>
-        <a class="btn btn-primary" href="my-art.html">Explore originals</a>
-        <a class="btn btn-ghost" href="contact.html">Create your custom art</a>
+  <!-- hero -->
+  <div class="hero-wrap">
+    <div class="container">
+      <div class="hero">
+        <img src="images/logo.jpg" alt="DariART logo background">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h1>Discover DariART</h1>
+          <div class="sub">Original paintings, portraits, and personalized artwork</div>
+          <div class="btns">
+            <a class="btn primary" href="my-art.html">Explore originals</a>
+            <a class="btn ghost" href="contact.html">Create your custom art</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ABOUT -->
+  <!-- about -->
   <section>
-    <div class="section-inner">
+    <div class="container">
       <h2>About my art</h2>
       <p class="lead">
-        I create paintings and illustrations in pencil, watercolor and oil.
-        Each piece reflects emotion, light, and quiet strength.
+        I create paintings and illustrations in pencil, watercolor and oil. Each piece reflects emotion, light, and quiet strength.
       </p>
     </div>
   </section>
 
-  <!-- ORIGINAL PAINTINGS -->
+  <!-- PAINTINGS -->
   <section>
-    <div class="section-inner">
+    <div class="container">
       <h2>Original Paintings</h2>
       <p class="lead">Discover captivating creations by Daria — a self-taught artist where passion and authenticity shine with every stroke.</p>
-      <div class="strip" aria-label="Paintings carousel">
-        <!-- 01..14 -->
-        <figure><img src="images/paint_01.jpeg" alt="Painting 01"></figure>
-        <figure><img src="images/paint_02.jpeg" alt="Painting 02"></figure>
-        <figure><img src="images/paint_03.jpeg" alt="Painting 03"></figure>
-        <figure><img src="images/paint_04.jpeg" alt="Painting 04"></figure>
-        <figure><img src="images/paint_05.jpeg" alt="Painting 05"></figure>
-        <figure><img src="images/paint_06.jpeg" alt="Painting 06"></figure>
-        <figure><img src="images/paint_07.jpeg" alt="Painting 07"></figure>
-        <figure><img src="images/paint_08.jpeg" alt="Painting 08"></figure>
-        <figure><img src="images/paint_09.jpeg" alt="Painting 09"></figure>
-        <figure><img src="images/paint_10.jpeg" alt="Painting 10"></figure>
-        <figure><img src="images/paint_11.jpeg" alt="Painting 11"></figure>
-        <figure><img src="images/paint_12.jpeg" alt="Painting 12"></figure>
-        <figure><img src="images/paint_13.jpeg" alt="Painting 13"></figure>
-        <figure><img src="images/paint_14.jpeg" alt="Painting 14"></figure>
+
+      <div class="rail-wrap" id="paintings">
+        <button class="arrow left"  data-target="rail-paint">&#10094;</button>
+        <button class="arrow right" data-target="rail-paint">&#10095;</button>
+
+        <div class="rail" id="rail-paint">
+          <!-- одинаковая высота карточек -->
+          <div class="card"><img src="images/paint_01.jpeg" alt=""></div>
+          <div class="card"><img src="images/paint_02.jpeg" alt=""></div>
+          <div class="card"><img src="images/paint_03.jpeg" alt=""></div>
+          <div class="card"><img src="images/paint_04.jpeg" alt=""></div>
+          <div class="card"><img src="images/paint_05.jpeg" alt=""></div>
+          <div class="card"><img src="images/paint_06.jpeg" alt=""></div>
+          <div class="card"><img src="images/paint_07.jpeg" alt=""></div>
+          <div class="card"><img src="images/paint_08.jpeg" alt=""></div>
+          <div class="card"><img src="images/paint_09.jpeg" alt=""></div>
+          <div class="card"><img src="images/paint_10.jpeg" alt=""></div>
+          <div class="card"><img src="images/paint_11.jpeg" alt=""></div>
+          <div class="card"><img src="images/paint_12.jpeg" alt=""></div>
+          <div class="card"><img src="images/paint_13.jpeg" alt=""></div>
+          <div class="card"><img src="images/paint_14.jpeg" alt=""></div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- WATERCOLOR -->
   <section>
-    <div class="section-inner">
+    <div class="container">
       <h2>Watercolor</h2>
-      <p class="lead">Light, airy stories told in color and paper texture.</p>
-      <div class="strip" aria-label="Watercolor carousel">
-        <figure><img src="images/wc_01.jpeg" alt="Watercolor 01"></figure>
-        <figure><img src="images/wc_02.jpeg" alt="Watercolor 02"></figure>
-        <figure><img src="images/wc_03.jpeg" alt="Watercolor 03"></figure>
-        <figure><img src="images/wc_04.jpeg" alt="Watercolor 04"></figure>
-        <figure><img src="images/wc_05.jpeg" alt="Watercolor 05"></figure>
-        <figure><img src="images/wc_06.jpeg" alt="Watercolor 06"></figure>
-        <figure><img src="images/wc_07.jpeg" alt="Watercolor 07"></figure>
-        <figure><img src="images/wc_08.jpeg" alt="Watercolor 08"></figure>
-        <figure><img src="images/wc_09.jpeg" alt="Watercolor 09"></figure>
-        <figure><img src="images/wc_10.jpeg" alt="Watercolor 10"></figure>
-        <figure><img src="images/wc_11.jpeg" alt="Watercolor 11"></figure>
+      <p class="lead">Light, narrative watercolor studies and illustrations.</p>
+
+      <div class="rail-wrap">
+        <button class="arrow left"  data-target="rail-wc">&#10094;</button>
+        <button class="arrow right" data-target="rail-wc">&#10095;</button>
+
+        <div class="rail" id="rail-wc">
+          <div class="card"><img src="images/wc_01.jpeg" alt=""></div>
+          <div class="card"><img src="images/wc_02.jpeg" alt=""></div>
+          <div class="card"><img src="images/wc_03.jpeg" alt=""></div>
+          <div class="card"><img src="images/wc_04.jpeg" alt=""></div>
+          <div class="card"><img src="images/wc_05.jpeg" alt=""></div>
+          <div class="card"><img src="images/wc_06.jpeg" alt=""></div>
+          <div class="card"><img src="images/wc_07.jpeg" alt=""></div>
+          <div class="card"><img src="images/wc_08.jpeg" alt=""></div>
+          <div class="card"><img src="images/wc_09.jpeg" alt=""></div>
+          <div class="card"><img src="images/wc_10.jpeg" alt=""></div>
+          <div class="card"><img src="images/wc_11.jpeg" alt=""></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PENCIL PORTRAITS -->
+  <!-- PENCIL -->
   <section>
-    <div class="section-inner">
+    <div class="container">
       <h2>Pencil Portraits</h2>
       <p class="lead">Quiet graphite lines that keep a living gaze.</p>
-      <div class="strip" aria-label="Pencil portraits carousel">
-        <figure><img src="images/pastushka.jpeg" alt="Portrait — пастушка"></figure>
-        <figure><img src="images/жен.jpeg" alt="Portrait — жен"></figure>
-        <figure><img src="images/наст.jpeg" alt="Portrait — наст"></figure>
-        <figure><img src="images/джигит.jpeg" alt="Portrait — джигит"></figure>
+
+      <div class="rail-wrap">
+        <button class="arrow left"  data-target="rail-pencil">&#10094;</button>
+        <button class="arrow right" data-target="rail-pencil">&#10095;</button>
+
+        <div class="rail" id="rail-pencil">
+          <div class="card"><img src="images/наст.jpeg" alt=""></div>
+          <div class="card"><img src="images/жен.jpeg" alt=""></div>
+          <div class="card"><img src="images/джигит.jpeg" alt=""></div>
+          <div class="card"><img src="images/пастушка.jpeg" alt=""></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- БЕЛЫЙ НИЗ: CTA -->
-  <section class="white">
-    <div class="section-inner cta">
-      <h3>Ready to commission?</h3>
-      <div class="actions">
-        <a class="btn btn-primary" href="contact.html">Request custom art</a>
-        <a class="btn" style="background:#eee;color:#222" href="my-art.html">More of my art</a>
+  <!-- CTA + bottom portrait on WHITE -->
+  <section class="more">
+    <div class="container cta-inner">
+      <div class="cta-card">
+        <div class="cta">
+          <h3>Ready to commission?</h3>
+          <p>Tell me about your idea — portrait, illustration, or a painting for your space.</p>
+          <div class="btns" style="justify-content:flex-start">
+            <a class="btn primary" href="contact.html">Request custom art</a>
+            <a class="btn" style="background:var(--accent-ghost); color:var(--accent)" href="my-art.html">More of my art</a>
+          </div>
+        </div>
+      </div>
+      <div class="cta-img">
+        <a href="https://www.youtube.com/@dariART2002" target="_blank" rel="noopener">
+          <img src="images/more_art.jpg" alt="More of my art">
+        </a>
       </div>
     </div>
   </section>
 
+  <!-- footer -->
   <footer>
-    © 2025 Daria Sirchenko · All rights reserved
+    <div class="container foot">
+      <div>© 2025 Daria Sirchenko — All rights reserved</div>
+      <div class="icons">
+        <a class="icon" href="https://www.instagram.com/wild_and_free_sisters" target="_blank" aria-label="Instagram" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        </a>
+        <a class="icon" href="https://www.youtube.com/@dariART2002" target="_blank" aria-label="YouTube" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M22 12s0-3.5-.45-5.1a3 3 0 0 0-2.1-2.1C17.8 4.3 12 4.3 12 4.3s-5.8 0-7.45.5a3 3 0 0 0-2.1 2.1C2 8.5 2 12 2 12s0 3.5.45 5.1a3 3 0 0 0 2.1 2.1c1.65.5 7.45.5 7.45.5s5.8 0 7.45-.5a3 3 0 0 0 2.1-2.1C22 15.5 22 12 22 12Z" stroke="currentColor" stroke-width="1.6"/><path d="M10 9.5v5l4-2.5-4-2.5Z" fill="currentColor"/></svg>
+        </a>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    // стрелки каруселей
+    document.querySelectorAll('.arrow').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const id = btn.getAttribute('data-target');
+        const rail = document.getElementById(id);
+        const step = rail.querySelector('.card').offsetWidth + parseInt(getComputedStyle(rail).gap||'18');
+        rail.scrollBy({left: btn.classList.contains('right') ? step : -step, behavior:'smooth'});
+      });
+    });
+  </script>
 </body>
 </html>
 
