@@ -5,21 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Daria Sirchenko — DariART</title>
 
-<!-- Шрифты -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
 
 <style>
   :root{
-    --coffee:#d2bfa0;   /* общий «кофейный» фон */
-    --beige:#efe3c8;    /* светлые секции под фото/галереи */
+    --coffee:#d2bfa0;
+    --beige:#efe3c8;
     --ink:#1f2937;
     --muted:#6b7280;
-    --brand:#14532d;    /* зелёные кнопки */
+    --brand:#14532d;
     --radius:18px;
-    --card-w:280px;     /* ширина карточки в ленте */
-    --card-h:260px;     /* ЕДИНАЯ высота изображений */
+    --card-w:280px;
+    --card-h:260px;
     --rail-gap:18px;
-    --page-max:1100px;  /* убираем «резину», делаем поля по бокам */
+    --page-max:1100px;
   }
 
   *{box-sizing:border-box}
@@ -32,10 +31,8 @@
   a{color:#5b3aa4;text-decoration:none}
   a:hover{text-decoration:underline}
 
-  /* контейнер страницы */
   .wrap{max-width:var(--page-max); margin:0 auto; padding:0 20px}
 
-  /* шапка */
   header{
     height:80px;
     display:flex; align-items:center;
@@ -44,7 +41,6 @@
   .brand{font-family:"Playfair Display",serif; font-weight:700; letter-spacing:.2px}
   nav a{margin-left:22px}
 
-  /* HERO */
   .hero{
     position:relative;
     border-radius:var(--radius);
@@ -54,15 +50,13 @@
     background:#2f2f2f;
   }
   .hero::before{
-    /* фон — твой логотип/доски */
     content:"";
     position:absolute; inset:0;
-    background:url("images/logo.jpg") center/cover no-repeat;
+    background:url("images/logo.jpeg") center/cover no-repeat;
     filter:contrast(1) brightness(.92);
     transform:scale(1.02);
   }
   .hero::after{
-    /* мягкая затемняющая вуаль для читабельности текста */
     content:"";
     position:absolute; inset:0;
     background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.15));
@@ -93,7 +87,6 @@
   .btn.light{background:rgba(255,255,255,.08)}
   .btn:hover{opacity:.95; text-decoration:none}
 
-  /* Секции */
   section{padding:26px 0}
   .section--beige{background:var(--beige)}
   h2{
@@ -104,7 +97,6 @@
   }
   .lead{color:var(--muted); margin:0 0 16px}
 
-  /* Блок с фото «о себе» */
   .about-grid{
     display:grid; grid-template-columns:1.15fr .85fr; gap:24px; align-items:center;
   }
@@ -117,7 +109,6 @@
     display:block; width:100%; height:100%; max-height:360px; object-fit:cover;
   }
 
-  /* Лента (карусель) */
   .rail{
     position:relative;
     border-radius:var(--radius);
@@ -147,7 +138,6 @@
   }
   .arrow.left{left:8px} .arrow.right{right:8px}
 
-  /* Нижний призыв + фото */
   .cta{
     display:grid; grid-template-columns:1fr 260px; gap:24px; align-items:center;
     padding:18px; background:var(--beige); border-radius:var(--radius);
@@ -156,7 +146,6 @@
   .cta-img{border-radius:14px; overflow:hidden}
   .cta-img img{width:100%; height:220px; object-fit:cover; display:block}
 
-  /* Футер */
   footer{padding:22px 0 28px; color:#444}
   .icons{display:flex; gap:14px}
   .icon{width:22px; height:22px; display:inline-block; opacity:.9}
@@ -182,7 +171,6 @@
 
   <main class="wrap">
 
-    <!-- HERO -->
     <section class="hero" aria-label="DariART logo background">
       <div class="hero-box">
         <h1>Discover DariART</h1>
@@ -194,7 +182,6 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section>
       <h2>About my art</h2>
       <p class="lead">I create paintings and illustrations in pencil, watercolor and oil. Each piece reflects emotion, light, and quiet strength.</p>
@@ -203,7 +190,6 @@
         <div class="rail">
           <h3 class="lead" style="margin:0 0 10px;color:#374151">Original Paintings</h3>
           <div class="track" id="rail-paint">
-            <!-- одинаковый размер карточек -->
             <div class="card"><img src="images/paint_01.jpeg" alt=""></div>
             <div class="card"><img src="images/paint_02.jpeg" alt=""></div>
             <div class="card"><img src="images/paint_03.jpeg" alt=""></div>
@@ -223,12 +209,10 @@
           <button class="arrow right" onclick="scrollRail('rail-paint', 1)">❯</button>
         </div>
 
-        <!-- твоя фотография у дерева справа -->
-        <div class="about-img"><img src="images/about.jpg" alt="Artist portrait by a tree"></div>
+        <div class="about-img"><img src="images/about.jpeg" alt="Artist portrait by a tree"></div>
       </div>
     </section>
 
-    <!-- WATERCOLOR -->
     <section class="section--beige" style="border-radius:var(--radius)">
       <div class="rail">
         <h2 style="margin-top:0">Watercolor</h2>
@@ -251,23 +235,21 @@
       </div>
     </section>
 
-    <!-- PENCIL PORTRAITS -->
     <section>
       <div class="rail">
         <h2 style="margin-top:0">Pencil Portraits</h2>
         <p class="lead">Quiet graphite lines that keep a living gaze.</p>
         <div class="track" id="rail-pencil">
+          <div class="card"><img src="images/pastuchka.jpeg" alt=""></div>
           <div class="card"><img src="images/наст.jpeg" alt=""></div>
           <div class="card"><img src="images/жен.jpeg" alt=""></div>
           <div class="card"><img src="images/джигит.jpeg" alt=""></div>
-          <div class="card"><img src="images/пастушка.jpeg" alt=""></div>
         </div>
         <button class="arrow left"  onclick="scrollRail('rail-pencil',-1)">❮</button>
         <button class="arrow right" onclick="scrollRail('rail-pencil', 1)">❯</button>
       </div>
     </section>
 
-    <!-- CTA + фото (ч/б) -->
     <section class="section--beige" style="border-radius:var(--radius)">
       <div class="cta">
         <div>
@@ -279,7 +261,7 @@
           </div>
         </div>
         <a class="cta-img" href="https://www.youtube.com/@dariART2002" target="_blank" rel="noopener">
-          <img src="images/more_art.jpg" alt="More of my art">
+          <img src="images/more_art.jpeg" alt="More of my art">
         </a>
       </div>
     </section>
@@ -302,9 +284,10 @@
   function scrollRail(id, dir){
     const el = document.getElementById(id);
     if(!el) return;
-    const step = el.clientWidth - 40; // почти на экран
+    const step = el.clientWidth - 40;
     el.scrollBy({left: dir * step, behavior:'smooth'});
   }
 </script>
 </body>
 </html>
+
