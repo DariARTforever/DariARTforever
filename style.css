@@ -38,13 +38,14 @@ body{
   position:relative;
   max-width:min(980px, 92vw);
   margin:0 auto;
-  height:64vh;               /* высота блока */
+  height:64vh;
   min-height:420px;
   border-radius:var(--radius);
   overflow:hidden;
   box-shadow:var(--shadow);
-  background: #eee url("images/logo.jpg") center/cover no-repeat; /* имя файла не меняем */
+  background: #d9cbb7 url("images/logo.jpeg") center/cover no-repeat; /* исправлено с .jpg на .jpeg */
 }
+
 .hero-overlay{
   position:absolute; inset:0;
   background:linear-gradient(180deg, rgba(0,0,0,.0) 35%, rgba(0,0,0,.35) 85%);
