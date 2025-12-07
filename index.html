@@ -1,241 +1,239 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DariART — Daria Sirchenko</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --coffee:#d8c1a1;   /* фон страницы */
-      --beige:#efe4cf;    /* секции */
-      --ink:#232421;
-      --muted:#6b6b6b;
-      --accent:#1f6b45;   /* зелёная кнопка */
-      --accent-ghost:#e7efe9;
-      --radius:18px;
-      --rail-h:360px;     /* высота карточек в ленте */
-      --gap:18px;
-      --container: min(1100px, 92vw);
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Daria Sirchenko — DariART</title>
 
-    *{box-sizing:border-box;}
-    html,body{height:100%;}
-    body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--ink);
-      background:var(--coffee);
-      line-height:1.55;
-    }
-    a{color:inherit;text-decoration:none}
-    .container{width:var(--container); margin-inline:auto;}
+<!-- Шрифты -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
 
-    /* Header */
-    header{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(120%) blur(6px);
-      background:rgba(216,193,161,.8);
-      border-bottom:1px solid rgba(0,0,0,.06);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 6px;
-    }
-    .brand{font-family:"Playfair Display", serif; font-weight:700; letter-spacing:.2px}
-    .nav a{padding:8px 10px; border-radius:10px}
-    .nav a:hover{background:rgba(0,0,0,.06)}
-    .lang{opacity:.8}
+<style>
+  :root{
+    --coffee:#d2bfa0;   /* общий «кофейный» фон */
+    --beige:#efe3c8;    /* светлые секции под фото/галереи */
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --brand:#14532d;    /* зелёные кнопки */
+    --radius:18px;
+    --card-w:280px;     /* ширина карточки в ленте */
+    --card-h:260px;     /* ЕДИНАЯ высота изображений */
+    --rail-gap:18px;
+    --page-max:1100px;  /* убираем «резину», делаем поля по бокам */
+  }
 
-    /* Hero */
-    .hero-wrap{background:var(--beige); padding:28px 0 40px}
-    .hero{
-      position:relative; border-radius:var(--radius); overflow:hidden;
-      min-height:260px; display:grid; place-items:center;
-      box-shadow:0 10px 30px rgba(0,0,0,.06);
-    }
-    .hero img{
-      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:contrast(1) brightness(.98);
-      transform:scale(1.02);
-    }
-    .hero-overlay{
-      position:absolute; inset:0;
-      background:linear-gradient(180deg, rgba(10,10,10,.35), rgba(10,10,10,.35));
-    }
-    .hero-content{
-      position:relative; text-align:center; color:#fff; padding:22px;
-    }
-    .hero h1{
-      margin:0 0 6px; font-family:"Playfair Display", serif; font-size:clamp(28px, 4vw, 42px); letter-spacing:.3px;
-      text-shadow:0 2px 10px rgba(0,0,0,.35);
-    }
-    .sub{opacity:.95; font-size:14px; margin-bottom:14px}
-    .btns{display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      padding:11px 15px; border-radius:999px; font-weight:600; font-size:14px; border:1px solid transparent; cursor:pointer;
-    }
-    .btn.primary{background:var(--accent); color:#fff;}
-    .btn.ghost{background:transparent; color:#fff; border-color:rgba(255,255,255,.55); }
-    .btn.ghost:hover{background:rgba(255,255,255,.08)}
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--coffee);
+  }
+  a{color:#5b3aa4;text-decoration:none}
+  a:hover{text-decoration:underline}
 
-    /* Sections */
-    section{padding:52px 0; background:var(--beige);}
-    section + section{border-top:1px solid rgba(0,0,0,.05)}
-    h2{font-family:"Playfair Display", serif; font-size: clamp(22px,3vw,28px); margin:0 0 6px}
-    .lead{color:var(--muted); font-size:14.5px; margin:0 0 18px}
+  /* контейнер страницы */
+  .wrap{max-width:var(--page-max); margin:0 auto; padding:0 20px}
 
-    /* Carousel (scroll snap + arrows) */
-    .rail-wrap{position:relative}
-    .rail{
-      display:flex; gap:var(--gap);
-      overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding:var(--gap);
-      padding:var(--gap);
-      border-radius:var(--radius);
-      background:#fff; box-shadow:0 8px 24px rgba(0,0,0,.06);
-    }
-    .rail::-webkit-scrollbar{height:10px}
-    .rail::-webkit-scrollbar-thumb{background:#ddd; border-radius:10px}
-    .card{
-      flex:0 0 auto; width: calc((var(--container) - var(--gap)*4)/3);
-      height:var(--rail-h); border-radius:14px; overflow:hidden; scroll-snap-align:start; background:#f7f7f7;
-      display:grid; place-items:center;
-    }
-    .card img{width:100%; height:100%; object-fit:cover; display:block}
+  /* шапка */
+  header{
+    height:80px;
+    display:flex; align-items:center;
+    justify-content:space-between;
+  }
+  .brand{font-family:"Playfair Display",serif; font-weight:700; letter-spacing:.2px}
+  nav a{margin-left:22px}
 
-    .arrow{
-      position:absolute; top:50%; translate:0 -50%;
-      width:40px; height:40px; border-radius:50%;
-      display:grid; place-items:center; background:rgba(255,255,255,.92);
-      border:1px solid rgba(0,0,0,.08); box-shadow:0 6px 16px rgba(0,0,0,.08);
-      cursor:pointer; user-select:none;
-    }
-    .arrow:hover{background:#fff}
-    .arrow.left{left:-14px}
-    .arrow.right{right:-14px}
+  /* HERO */
+  .hero{
+    position:relative;
+    border-radius:var(--radius);
+    overflow:hidden;
+    margin:10px auto 26px;
+    min-height:240px;
+    background:#2f2f2f;
+  }
+  .hero::before{
+    /* фон — твой логотип/доски */
+    content:"";
+    position:absolute; inset:0;
+    background:url("images/logo.jpg") center/cover no-repeat;
+    filter:contrast(1) brightness(.92);
+    transform:scale(1.02);
+  }
+  .hero::after{
+    /* мягкая затемняющая вуаль для читабельности текста */
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.15));
+  }
+  .hero-box{
+    position:relative; z-index:1;
+    padding:40px 30px;
+    max-width:680px;
+    color:#fff;
+  }
+  .hero h1{
+    margin:0 0 10px;
+    font-family:"Playfair Display",serif;
+    font-weight:700;
+    font-size:42px;
+    line-height:1.15;
+    letter-spacing:.3px;
+    text-shadow:0 2px 10px rgba(0,0,0,.35);
+  }
+  .hero p{margin:0 0 18px; color:#eef1f3}
+  .btns{display:flex; gap:12px; flex-wrap:wrap}
+  .btn{
+    display:inline-block; padding:10px 16px; border-radius:999px;
+    font-weight:600; font-size:14px; letter-spacing:.2px;
+    border:1px solid rgba(255,255,255,.28); color:#fff; backdrop-filter:blur(3px)
+  }
+  .btn.primary{background:var(--brand); border-color:var(--brand)}
+  .btn.light{background:rgba(255,255,255,.08)}
+  .btn:hover{opacity:.95; text-decoration:none}
 
-    /* Ready / CTA */
-    .cta{background:var(--beige)}
-    .cta-inner{
-      display:grid; grid-template-columns:1.2fr .8fr; gap:24px; align-items:center;
-    }
-    .cta-card{background:#fff; border-radius:16px; padding:22px; box-shadow:0 8px 24px rgba(0,0,0,.06)}
-    .cta h3{font-family:"Playfair Display", serif; margin:0 0 10px}
-    .cta p{margin:0 0 16px; color:var(--muted)}
-    .cta-img{
-      border-radius:16px; overflow:hidden; background:#fff;
-    }
-    .cta-img a{display:block}
-    .cta-img img{width:100%; height:100%; object-fit:cover; display:block}
+  /* Секции */
+  section{padding:26px 0}
+  .section--beige{background:var(--beige)}
+  h2{
+    margin:0 0 8px;
+    font-family:"Playfair Display",serif;
+    font-weight:700;
+    font-size:28px;
+  }
+  .lead{color:var(--muted); margin:0 0 16px}
 
-    /* Footer */
-    footer{background:var(--beige); padding:28px 0; border-top:1px solid rgba(0,0,0,.08)}
-    .foot{display:flex; align-items:center; justify-content:space-between; gap:18px; font-size:14px}
-    .icons{display:flex; gap:12px}
-    .icon{width:28px; height:28px; display:grid; place-items:center; border-radius:50%; background:#fff; border:1px solid rgba(0,0,0,.08)}
-    .icon svg{width:16px; height:16px}
+  /* Блок с фото «о себе» */
+  .about-grid{
+    display:grid; grid-template-columns:1.15fr .85fr; gap:24px; align-items:center;
+  }
+  .about-img{
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:#ddd;
+  }
+  .about-img img{
+    display:block; width:100%; height:100%; max-height:360px; object-fit:cover;
+  }
 
-    /* White bottom section with your portrait */
-    .more{background:#fff; padding:40px 0}
+  /* Лента (карусель) */
+  .rail{
+    position:relative;
+    border-radius:var(--radius);
+    background:#fff;
+    padding:18px;
+    overflow:hidden;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+  }
+  .track{
+    display:flex; gap:var(--rail-gap);
+    overflow-x:auto; scroll-behavior:smooth;
+    padding-bottom:6px;
+    scrollbar-width:none;
+  }
+  .track::-webkit-scrollbar{display:none}
+  .card{
+    flex:0 0 var(--card-w);
+    border-radius:16px; overflow:hidden; background:#f9fafb;
+    box-shadow:0 1px 6px rgba(0,0,0,.06);
+  }
+  .card img{width:100%; height:var(--card-h); object-fit:cover; display:block}
+  .arrow{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:38px; height:38px; border:none; border-radius:999px;
+    display:grid; place-items:center; font-size:18px; cursor:pointer;
+    color:#222; background:rgba(255,255,255,.95); box-shadow:0 1px 8px rgba(0,0,0,.12);
+  }
+  .arrow.left{left:8px} .arrow.right{right:8px}
 
-    /* Responsive */
-    @media (max-width: 900px){
-      :root{ --rail-h:300px; }
-      .card{ width: calc((var(--container) - var(--gap)*3)/2); }
-      .cta-inner{grid-template-columns:1fr; }
-      .arrow.left{left:2px} .arrow.right{right:2px}
-    }
-    @media (max-width: 580px){
-      :root{ --rail-h:250px; }
-      .card{ width: calc(var(--container) - var(--gap)*2); }
-    }
-  </style>
+  /* Нижний призыв + фото */
+  .cta{
+    display:grid; grid-template-columns:1fr 260px; gap:24px; align-items:center;
+    padding:18px; background:var(--beige); border-radius:var(--radius);
+  }
+  .cta p{margin:8px 0 0; color:var(--muted)}
+  .cta-img{border-radius:14px; overflow:hidden}
+  .cta-img img{width:100%; height:220px; object-fit:cover; display:block}
+
+  /* Футер */
+  footer{padding:22px 0 28px; color:#444}
+  .icons{display:flex; gap:14px}
+  .icon{width:22px; height:22px; display:inline-block; opacity:.9}
+  .icon img{width:100%; height:100%}
+
+  @media (max-width:900px){
+    .about-grid{grid-template-columns:1fr; gap:14px}
+    .hero h1{font-size:34px}
+    :root{ --card-w:220px; --card-h:220px; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- header -->
-  <header>
-    <div class="container nav">
-      <a class="brand" href="./">Daria Sirchenko</a>
-      <nav>
-        <a href="my-art.html">My Art</a>
-        <a href="contact.html">Contact</a>
-        <a class="lang" href="?lang=ru" title="Русская версия">RU</a>
-      </nav>
-    </div>
+  <header class="wrap">
+    <div class="brand">Daria Sirchenko</div>
+    <nav>
+      <a href="my-art.html">My Art</a>
+      <a href="contact.html">Contact</a>
+      <a href="index.html?lang=ru">RU</a>
+    </nav>
   </header>
 
-  <!-- hero -->
-  <div class="hero-wrap">
-    <div class="container">
-      <div class="hero">
-        <img src="images/logo.jpg" alt="DariART logo background">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-          <h1>Discover DariART</h1>
-          <div class="sub">Original paintings, portraits, and personalized artwork</div>
-          <div class="btns">
-            <a class="btn primary" href="my-art.html">Explore originals</a>
-            <a class="btn ghost" href="contact.html">Create your custom art</a>
-          </div>
+  <main class="wrap">
+
+    <!-- HERO -->
+    <section class="hero" aria-label="DariART logo background">
+      <div class="hero-box">
+        <h1>Discover DariART</h1>
+        <p>Original paintings, portraits, and personalized artwork</p>
+        <div class="btns">
+          <a class="btn primary" href="my-art.html">Explore originals</a>
+          <a class="btn light" href="contact.html">Create your custom art</a>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- about -->
-  <section>
-    <div class="container">
+    <!-- ABOUT -->
+    <section>
       <h2>About my art</h2>
-      <p class="lead">
-        I create paintings and illustrations in pencil, watercolor and oil. Each piece reflects emotion, light, and quiet strength.
-      </p>
-    </div>
-  </section>
+      <p class="lead">I create paintings and illustrations in pencil, watercolor and oil. Each piece reflects emotion, light, and quiet strength.</p>
 
-  <!-- PAINTINGS -->
-  <section>
-    <div class="container">
-      <h2>Original Paintings</h2>
-      <p class="lead">Discover captivating creations by Daria — a self-taught artist where passion and authenticity shine with every stroke.</p>
-
-      <div class="rail-wrap" id="paintings">
-        <button class="arrow left"  data-target="rail-paint">&#10094;</button>
-        <button class="arrow right" data-target="rail-paint">&#10095;</button>
-
-        <div class="rail" id="rail-paint">
-          <!-- одинаковая высота карточек -->
-          <div class="card"><img src="images/paint_01.jpeg" alt=""></div>
-          <div class="card"><img src="images/paint_02.jpeg" alt=""></div>
-          <div class="card"><img src="images/paint_03.jpeg" alt=""></div>
-          <div class="card"><img src="images/paint_04.jpeg" alt=""></div>
-          <div class="card"><img src="images/paint_05.jpeg" alt=""></div>
-          <div class="card"><img src="images/paint_06.jpeg" alt=""></div>
-          <div class="card"><img src="images/paint_07.jpeg" alt=""></div>
-          <div class="card"><img src="images/paint_08.jpeg" alt=""></div>
-          <div class="card"><img src="images/paint_09.jpeg" alt=""></div>
-          <div class="card"><img src="images/paint_10.jpeg" alt=""></div>
-          <div class="card"><img src="images/paint_11.jpeg" alt=""></div>
-          <div class="card"><img src="images/paint_12.jpeg" alt=""></div>
-          <div class="card"><img src="images/paint_13.jpeg" alt=""></div>
-          <div class="card"><img src="images/paint_14.jpeg" alt=""></div>
+      <div class="about-grid">
+        <div class="rail">
+          <h3 class="lead" style="margin:0 0 10px;color:#374151">Original Paintings</h3>
+          <div class="track" id="rail-paint">
+            <!-- одинаковый размер карточек -->
+            <div class="card"><img src="images/paint_01.jpeg" alt=""></div>
+            <div class="card"><img src="images/paint_02.jpeg" alt=""></div>
+            <div class="card"><img src="images/paint_03.jpeg" alt=""></div>
+            <div class="card"><img src="images/paint_04.jpeg" alt=""></div>
+            <div class="card"><img src="images/paint_05.jpeg" alt=""></div>
+            <div class="card"><img src="images/paint_06.jpeg" alt=""></div>
+            <div class="card"><img src="images/paint_07.jpeg" alt=""></div>
+            <div class="card"><img src="images/paint_08.jpeg" alt=""></div>
+            <div class="card"><img src="images/paint_09.jpeg" alt=""></div>
+            <div class="card"><img src="images/paint_10.jpeg" alt=""></div>
+            <div class="card"><img src="images/paint_11.jpeg" alt=""></div>
+            <div class="card"><img src="images/paint_12.jpeg" alt=""></div>
+            <div class="card"><img src="images/paint_13.jpeg" alt=""></div>
+            <div class="card"><img src="images/paint_14.jpeg" alt=""></div>
+          </div>
+          <button class="arrow left"  onclick="scrollRail('rail-paint',-1)">❮</button>
+          <button class="arrow right" onclick="scrollRail('rail-paint', 1)">❯</button>
         </div>
+
+        <!-- твоя фотография у дерева справа -->
+        <div class="about-img"><img src="images/about.jpg" alt="Artist portrait by a tree"></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- WATERCOLOR -->
-  <section>
-    <div class="container">
-      <h2>Watercolor</h2>
-      <p class="lead">Light, narrative watercolor studies and illustrations.</p>
-
-      <div class="rail-wrap">
-        <button class="arrow left"  data-target="rail-wc">&#10094;</button>
-        <button class="arrow right" data-target="rail-wc">&#10095;</button>
-
-        <div class="rail" id="rail-wc">
+    <!-- WATERCOLOR -->
+    <section class="section--beige" style="border-radius:var(--radius)">
+      <div class="rail">
+        <h2 style="margin-top:0">Watercolor</h2>
+        <p class="lead">Delicate color, light and air.</p>
+        <div class="track" id="rail-wc">
           <div class="card"><img src="images/wc_01.jpeg" alt=""></div>
           <div class="card"><img src="images/wc_02.jpeg" alt=""></div>
           <div class="card"><img src="images/wc_03.jpeg" alt=""></div>
@@ -248,77 +246,65 @@
           <div class="card"><img src="images/wc_10.jpeg" alt=""></div>
           <div class="card"><img src="images/wc_11.jpeg" alt=""></div>
         </div>
+        <button class="arrow left"  onclick="scrollRail('rail-wc',-1)">❮</button>
+        <button class="arrow right" onclick="scrollRail('rail-wc', 1)">❯</button>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PENCIL -->
-  <section>
-    <div class="container">
-      <h2>Pencil Portraits</h2>
-      <p class="lead">Quiet graphite lines that keep a living gaze.</p>
-
-      <div class="rail-wrap">
-        <button class="arrow left"  data-target="rail-pencil">&#10094;</button>
-        <button class="arrow right" data-target="rail-pencil">&#10095;</button>
-
-        <div class="rail" id="rail-pencil">
+    <!-- PENCIL PORTRAITS -->
+    <section>
+      <div class="rail">
+        <h2 style="margin-top:0">Pencil Portraits</h2>
+        <p class="lead">Quiet graphite lines that keep a living gaze.</p>
+        <div class="track" id="rail-pencil">
           <div class="card"><img src="images/наст.jpeg" alt=""></div>
           <div class="card"><img src="images/жен.jpeg" alt=""></div>
           <div class="card"><img src="images/джигит.jpeg" alt=""></div>
           <div class="card"><img src="images/пастушка.jpeg" alt=""></div>
         </div>
+        <button class="arrow left"  onclick="scrollRail('rail-pencil',-1)">❮</button>
+        <button class="arrow right" onclick="scrollRail('rail-pencil', 1)">❯</button>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA + bottom portrait on WHITE -->
-  <section class="more">
-    <div class="container cta-inner">
-      <div class="cta-card">
-        <div class="cta">
-          <h3>Ready to commission?</h3>
+    <!-- CTA + фото (ч/б) -->
+    <section class="section--beige" style="border-radius:var(--radius)">
+      <div class="cta">
+        <div>
+          <h2 style="margin:0">Ready to commission?</h2>
           <p>Tell me about your idea — portrait, illustration, or a painting for your space.</p>
-          <div class="btns" style="justify-content:flex-start">
+          <div class="btns">
             <a class="btn primary" href="contact.html">Request custom art</a>
-            <a class="btn" style="background:var(--accent-ghost); color:var(--accent)" href="my-art.html">More of my art</a>
+            <a class="btn light" href="my-art.html">More of my art</a>
           </div>
         </div>
-      </div>
-      <div class="cta-img">
-        <a href="https://www.youtube.com/@dariART2002" target="_blank" rel="noopener">
+        <a class="cta-img" href="https://www.youtube.com/@dariART2002" target="_blank" rel="noopener">
           <img src="images/more_art.jpg" alt="More of my art">
         </a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- footer -->
-  <footer>
-    <div class="container foot">
-      <div>© 2025 Daria Sirchenko — All rights reserved</div>
-      <div class="icons">
-        <a class="icon" href="https://www.instagram.com/wild_and_free_sisters" target="_blank" aria-label="Instagram" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-        </a>
-        <a class="icon" href="https://www.youtube.com/@dariART2002" target="_blank" aria-label="YouTube" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M22 12s0-3.5-.45-5.1a3 3 0 0 0-2.1-2.1C17.8 4.3 12 4.3 12 4.3s-5.8 0-7.45.5a3 3 0 0 0-2.1 2.1C2 8.5 2 12 2 12s0 3.5.45 5.1a3 3 0 0 0 2.1 2.1c1.65.5 7.45.5 7.45.5s5.8 0 7.45-.5a3 3 0 0 0 2.1-2.1C22 15.5 22 12 22 12Z" stroke="currentColor" stroke-width="1.6"/><path d="M10 9.5v5l4-2.5-4-2.5Z" fill="currentColor"/></svg>
-        </a>
-      </div>
+  </main>
+
+  <footer class="wrap" style="display:flex;justify-content:space-between;align-items:center">
+    <div>© 2025 Daria Sirchenko • All rights reserved</div>
+    <div class="icons">
+      <a class="icon" href="https://www.instagram.com/wild_and_free_sisters" target="_blank" rel="noopener" aria-label="Instagram">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="">
+      </a>
+      <a class="icon" href="https://www.youtube.com/@dariART2002" target="_blank" rel="noopener" aria-label="YouTube">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="">
+      </a>
     </div>
   </footer>
 
-  <script>
-    // стрелки каруселей
-    document.querySelectorAll('.arrow').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const id = btn.getAttribute('data-target');
-        const rail = document.getElementById(id);
-        const step = rail.querySelector('.card').offsetWidth + parseInt(getComputedStyle(rail).gap||'18');
-        rail.scrollBy({left: btn.classList.contains('right') ? step : -step, behavior:'smooth'});
-      });
-    });
-  </script>
+<script>
+  function scrollRail(id, dir){
+    const el = document.getElementById(id);
+    if(!el) return;
+    const step = el.clientWidth - 40; // почти на экран
+    el.scrollBy({left: dir * step, behavior:'smooth'});
+  }
+</script>
 </body>
 </html>
-
