@@ -1,99 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DariART</title>
-  <link rel="stylesheet" href="style.css?v=5">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DariART — Daria Sirchenko</title>
+  <meta name="description" content="Original paintings, portraits, and personalized artwork by Daria Sirchenko." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="images/logo.jpg">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1><a href="index.html">Daria Sirchenko</a></h1>
-      <nav>
-        <a href="my-art.html">My Art</a>
-        <a href="contact.html">Contact</a>
+
+  <!-- Top bar -->
+  <header class="panel" style="padding-top:16px; padding-bottom:12px;">
+    <div class="container" style="display:flex; align-items:center; gap:16px; justify-content:space-between;">
+      <a href="index.html" style="font-weight:700; text-decoration:none; color:inherit;">Daria Sirchenko</a>
+
+      <nav style="display:flex; gap:18px; align-items:center;">
+        <a href="my-art.html" style="text-decoration:none;">My Art</a>
+        <a href="contact.html" style="text-decoration:none;">Contact</a>
+        <!-- простой переключатель языка-ссылкой (страницу RU можно сделать позже как index-ru.html) -->
+        <a href="index-ru.html" aria-label="Русская версия" title="Русская версия">RU</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <!-- HERO START -->
-<section class="hero" aria-label="DariART hero">
-  <div class="hero-inner">
-    <h1>Discover DariART</h1>
-    <p class="hero-sub">Original paintings, portraits, and personalized artwork</p>
-
-    <div class="cta">
-      <a class="btn btn-primary" href="my-art.html">Explore originals</a>
-      <a class="btn btn-outline" href="contact.html">Create your custom art</a>
+  <!-- HERO (логотип фоном, заголовок поверх, кнопки) -->
+  <header class="hero">
+    <div class="hero-card">
+      <div class="hero-overlay"></div>
+      <div class="hero-text">
+        <h1 class="hero-title">Discover DariART</h1>
+        <p class="hero-sub">Original paintings, portraits, and personalized artwork</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#originals">Explore originals</a>
+          <a class="btn btn-ghost" href="#custom">Create your custom art</a>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
-<!-- HERO END -->
+  </header>
 
+  <!-- ABOUT (бежевый) -->
+  <section id="about" class="panel panel--beige">
+    <div class="container">
+      <h2 class="section-title">About my art</h2>
+      <p class="section-sub">
+        I create paintings and illustrations in pencil, watercolor and oil. Each piece reflects emotion, light,
+        and quiet strength.
+      </p>
+    </div>
+  </section>
 
-    <!-- About -->
-    <section class="about beige">
-      <div class="container about-flex">
-        <div class="about-text">
-          <h2>Looking for a meaningful, custom creation?</h2>
-          <p>
-            Daria crafts personalized artworks that capture your unique story and infuse them
-            with genuine emotion — each piece designed exclusively for you.
-          </p>
-          <div class="buttons">
-            <a href="contact.html" class="btn primary">Request Custom Art</a>
-            <a href="my-art.html" class="btn secondary">How It Works</a>
-          </div>
-        </div>
-        <div class="about-photo">
-          <img src="images/about.jpeg" alt="Daria by the tree">
-        </div>
+  <!-- ORIGINALS / ГАЛЕРЕИ (кофейный). 
+       Здесь можно оставить твои текущие ленты/карусели — просто вставь их внутрь .container,
+       ничего больше менять не требуется. -->
+  <section id="originals" class="panel">
+    <div class="container">
+      <h2 class="section-title">Original Paintings</h2>
+      <p class="section-sub">Discover captivating creations by Daria — a self-taught artist where passion and authenticity shine with every stroke.</p>
+
+      <!-- ВСТАВЬ СЮДА свои существующие ленты/карусели (как у тебя было) -->
+      <!-- ▼ пример-«заглушка»; можно удалить, когда вставишь свои галереи -->
+      <div class="media" style="overflow:auto; white-space:nowrap;">
+        <img src="images/paint_01.jpeg" alt="" style="display:inline-block; width:320px; height:auto;">
+        <img src="images/paint_02.jpeg" alt="" style="display:inline-block; width:320px; height:auto;">
+        <img src="images/paint_03.jpeg" alt="" style="display:inline-block; width:320px; height:auto;">
       </div>
-    </section>
+      <!-- ▲ конец примера -->
+    </div>
+  </section>
 
-    <!-- Gallery -->
-    <section class="gallery coffee">
-      <div class="container">
-        <h2>Original Paintings</h2>
-        <p>
-          Discover captivating creations by Daria — a self-taught artist from Russia,
-          where passion and authenticity shine with every brushstroke.
-        </p>
-        <div class="gallery-row">
-          <img src="images/paint_01.jpeg" alt="Painting 1">
-          <img src="images/paint_02.jpeg" alt="Painting 2">
-          <img src="images/paint_03.jpeg" alt="Painting 3">
-          <img src="images/paint_04.jpeg" alt="Painting 4">
+  <!-- HOW IT WORKS (бежевый) -->
+  <section id="how" class="panel panel--beige">
+    <div class="container">
+      <h2 class="section-title">How it works</h2>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:18px;">
+        <div>
+          <h3 style="margin:0 0 6px;">01.</h3>
+          <p class="section-sub" style="margin:0;">Contact me via the form and share your idea.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- How it works -->
-    <section class="how beige">
-      <div class="container">
-        <h2>How It Works</h2>
-        <div class="steps">
-          <div class="step"><h3>01.</h3><p>Contact me via email or phone to share your idea.</p></div>
-          <div class="step"><h3>02.</h3><p>Discuss details like subject, size, and color preferences.</p></div>
-          <div class="step"><h3>03.</h3><p>Receive a personalized artwork that resonates with you.</p></div>
+        <div>
+          <h3 style="margin:0 0 6px;">02.</h3>
+          <p class="section-sub" style="margin:0;">We discuss size, materials, timing, and references.</p>
+        </div>
+        <div>
+          <h3 style="margin:0 0 6px;">03.</h3>
+          <p class="section-sub" style="margin:0;">Receive a personalized artwork that resonates with you.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Exhibition -->
-    <section class="exhibit white">
-      <div class="container">
-        <h2>Exhibition</h2>
-        <img src="images/exhibition.jpeg" alt="Daria portrait" class="exhibit-img">
+  <!-- CUSTOM / CTA (белый) + «more of my art» -->
+  <section id="custom" class="panel panel--white">
+    <div class="container" style="display:grid; grid-template-columns:1.1fr .9fr; gap:24px; align-items:center;">
+      <div>
+        <h2 class="section-title">Ready to commission?</h2>
+        <p class="section-sub">Tell me about your idea — portrait, illustration, or a painting for your space.</p>
+        <div class="btn-row" style="justify-content:flex-start;">
+          <a class="btn btn-primary" href="contact.html">Request custom art</a>
+          <a class="btn" style="background:#000; color:#fff;"
+             href="https://www.youtube.com/@dariART2002" target="_blank" rel="noopener">
+            More of my art
+          </a>
+        </div>
       </div>
-    </section>
-  </main>
+      <figure class="media">
+        <img src="images/more_art.jpg" alt="Artist portrait">
+      </figure>
+    </div>
+  </section>
 
-  <footer>
-    <p>© 2025 Daria Sirchenko | All rights reserved</p>
+  <!-- FOOTER -->
+  <footer class="footer panel">
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <span>© 2025 Daria Sirchenko | All rights reserved</span>
+      <div style="display:flex; gap:14px;">
+        <a href="https://www.instagram.com/wild_and_free_sisters" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+        <a href="https://www.youtube.com/@dariART2002" target="_blank" rel="noopener" aria-label="YouTube">▶️</a>
+      </div>
+    </div>
   </footer>
+
 </body>
 </html>
-
