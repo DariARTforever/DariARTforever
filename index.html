@@ -1,125 +1,236 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DariART — Daria Sirchenko</title>
-  <meta name="description" content="Original paintings, portraits, and personalized artwork by Daria Sirchenko." />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="images/logo.jpg">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Daria Sirchenko — DariART</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --coffee:#d8c5a9;   /* общий фон страницы */
+      --beige:#eadcc5;    /* блоки-секции */
+      --ink:#1b1b1b;
+      --muted:#6b6b6b;
+      --accent:#24533f;
+      --white:#fff;
+      --max:1100px;       /* ширина контента с «полями» по бокам */
+      --card-h: 360px;    /* высота карточек в ленте */
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      background:var(--coffee);
+      color:var(--ink);
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.55;
+    }
+
+    /* шапка */
+    .topbar{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .brand{font-family:"Playfair Display", serif; font-weight:700; letter-spacing:.2px}
+    .nav a{
+      color:var(--accent); text-decoration:none; margin-left:18px; font-weight:600;
+    }
+    .nav a:hover{opacity:.8}
+
+    /* герой */
+    .hero{
+      max-width:var(--max);
+      margin:24px auto 36px;
+      padding:0 18px;
+    }
+    .hero-card{
+      position:relative;
+      border-radius:var(--radius);
+      overflow:hidden;
+      height:360px;
+      box-shadow:var(--shadow);
+      background:#ddd url("images/logo.jpg") center/cover no-repeat;
+    }
+    .hero-overlay{
+      position:absolute; inset:0;
+      background:linear-gradient( to bottom, rgba(0,0,0,.05), rgba(0,0,0,.35) 65%, rgba(0,0,0,.45) );
+    }
+    .hero-text{
+      position:absolute; left:28px; bottom:28px; right:28px;
+      color:#fff;
+      text-shadow:0 2px 8px rgba(0,0,0,.28);
+    }
+    .hero-title{
+      font-family:"Playfair Display", serif;
+      font-size: clamp(26px, 4.2vw, 40px);
+      margin:0 0 6px 0;
+    }
+    .hero-sub{opacity:.92; margin-bottom:14px; font-size:14px}
+    .btn{
+      display:inline-block; border:0; border-radius:999px; padding:10px 16px;
+      font-weight:700; font-size:14px; cursor:pointer; text-decoration:none;
+    }
+    .btn-primary{background:var(--accent); color:#fff}
+    .btn-ghost{background:rgba(255,255,255,.2); color:#fff; backdrop-filter:blur(2px); border:1px solid rgba(255,255,255,.35)}
+    .btn + .btn{margin-left:10px}
+
+    /* секции */
+    section{padding:42px 0; background:var(--beige)}
+    .section-inner{max-width:var(--max); margin:0 auto; padding:0 18px}
+    h2{
+      font-family:"Playfair Display", serif; font-weight:700;
+      font-size: clamp(22px, 3.6vw, 30px); margin:0 0 6px 0;
+    }
+    .lead{color:var(--muted); margin:0 0 16px}
+
+    /* ленты */
+    .strip{
+      position:relative;
+      overflow-x:auto;
+      white-space:nowrap;
+      scrollbar-width:thin;
+      background:var(--white);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:14px;
+    }
+    .strip figure{
+      display:inline-block; margin:0 10px 0 0; background:#f7f7f7;
+      border-radius:14px; overflow:hidden;
+    }
+    .strip img{
+      height:var(--card-h); width:auto; display:block;
+    }
+    .strip figure:last-child{margin-right:0}
+
+    /* белый блок внизу */
+    .white{background:#fff}
+    .cta{
+      display:flex; flex-wrap:wrap; align-items:center; gap:18px;
+      justify-content:space-between;
+    }
+    .cta h3{font-family:"Playfair Display", serif; font-size: clamp(20px,3.4vw,26px); margin:0}
+    .actions .btn{font-size:15px}
+    footer{padding:28px 0; text-align:center; color:var(--muted)}
+    @media (max-width:760px){
+      :root{ --card-h: 260px; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Top bar -->
-  <header class="panel" style="padding-top:16px; padding-bottom:12px;">
-    <div class="container" style="display:flex; align-items:center; gap:16px; justify-content:space-between;">
-      <a href="index.html" style="font-weight:700; text-decoration:none; color:inherit;">Daria Sirchenko</a>
-
-      <nav style="display:flex; gap:18px; align-items:center;">
-        <a href="my-art.html" style="text-decoration:none;">My Art</a>
-        <a href="contact.html" style="text-decoration:none;">Contact</a>
-        <!-- простой переключатель языка-ссылкой (страницу RU можно сделать позже как index-ru.html) -->
-        <a href="index-ru.html" aria-label="Русская версия" title="Русская версия">RU</a>
-      </nav>
-    </div>
+  <!-- ШАПКА -->
+  <header class="topbar">
+    <div class="brand">Daria Sirchenko</div>
+    <nav class="nav">
+      <a href="my-art.html">My Art</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
 
-  <!-- HERO (логотип фоном, заголовок поверх, кнопки) -->
-  <header class="hero">
+  <!-- ГЕРОЙ -->
+  <div class="hero">
     <div class="hero-card">
       <div class="hero-overlay"></div>
       <div class="hero-text">
         <h1 class="hero-title">Discover DariART</h1>
-        <p class="hero-sub">Original paintings, portraits, and personalized artwork</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="#originals">Explore originals</a>
-          <a class="btn btn-ghost" href="#custom">Create your custom art</a>
-        </div>
+        <div class="hero-sub">Original paintings, portraits, and personalized artwork</div>
+        <a class="btn btn-primary" href="my-art.html">Explore originals</a>
+        <a class="btn btn-ghost" href="contact.html">Create your custom art</a>
       </div>
     </div>
-  </header>
+  </div>
 
-  <!-- ABOUT (бежевый) -->
-  <section id="about" class="panel panel--beige">
-    <div class="container">
-      <h2 class="section-title">About my art</h2>
-      <p class="section-sub">
-        I create paintings and illustrations in pencil, watercolor and oil. Each piece reflects emotion, light,
-        and quiet strength.
+  <!-- ABOUT -->
+  <section>
+    <div class="section-inner">
+      <h2>About my art</h2>
+      <p class="lead">
+        I create paintings and illustrations in pencil, watercolor and oil.
+        Each piece reflects emotion, light, and quiet strength.
       </p>
     </div>
   </section>
 
-  <!-- ORIGINALS / ГАЛЕРЕИ (кофейный). 
-       Здесь можно оставить твои текущие ленты/карусели — просто вставь их внутрь .container,
-       ничего больше менять не требуется. -->
-  <section id="originals" class="panel">
-    <div class="container">
-      <h2 class="section-title">Original Paintings</h2>
-      <p class="section-sub">Discover captivating creations by Daria — a self-taught artist where passion and authenticity shine with every stroke.</p>
-
-      <!-- ВСТАВЬ СЮДА свои существующие ленты/карусели (как у тебя было) -->
-      <!-- ▼ пример-«заглушка»; можно удалить, когда вставишь свои галереи -->
-      <div class="media" style="overflow:auto; white-space:nowrap;">
-        <img src="images/paint_01.jpeg" alt="" style="display:inline-block; width:320px; height:auto;">
-        <img src="images/paint_02.jpeg" alt="" style="display:inline-block; width:320px; height:auto;">
-        <img src="images/paint_03.jpeg" alt="" style="display:inline-block; width:320px; height:auto;">
-      </div>
-      <!-- ▲ конец примера -->
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS (бежевый) -->
-  <section id="how" class="panel panel--beige">
-    <div class="container">
-      <h2 class="section-title">How it works</h2>
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:18px;">
-        <div>
-          <h3 style="margin:0 0 6px;">01.</h3>
-          <p class="section-sub" style="margin:0;">Contact me via the form and share your idea.</p>
-        </div>
-        <div>
-          <h3 style="margin:0 0 6px;">02.</h3>
-          <p class="section-sub" style="margin:0;">We discuss size, materials, timing, and references.</p>
-        </div>
-        <div>
-          <h3 style="margin:0 0 6px;">03.</h3>
-          <p class="section-sub" style="margin:0;">Receive a personalized artwork that resonates with you.</p>
-        </div>
+  <!-- ORIGINAL PAINTINGS -->
+  <section>
+    <div class="section-inner">
+      <h2>Original Paintings</h2>
+      <p class="lead">Discover captivating creations by Daria — a self-taught artist where passion and authenticity shine with every stroke.</p>
+      <div class="strip" aria-label="Paintings carousel">
+        <!-- 01..14 -->
+        <figure><img src="images/paint_01.jpeg" alt="Painting 01"></figure>
+        <figure><img src="images/paint_02.jpeg" alt="Painting 02"></figure>
+        <figure><img src="images/paint_03.jpeg" alt="Painting 03"></figure>
+        <figure><img src="images/paint_04.jpeg" alt="Painting 04"></figure>
+        <figure><img src="images/paint_05.jpeg" alt="Painting 05"></figure>
+        <figure><img src="images/paint_06.jpeg" alt="Painting 06"></figure>
+        <figure><img src="images/paint_07.jpeg" alt="Painting 07"></figure>
+        <figure><img src="images/paint_08.jpeg" alt="Painting 08"></figure>
+        <figure><img src="images/paint_09.jpeg" alt="Painting 09"></figure>
+        <figure><img src="images/paint_10.jpeg" alt="Painting 10"></figure>
+        <figure><img src="images/paint_11.jpeg" alt="Painting 11"></figure>
+        <figure><img src="images/paint_12.jpeg" alt="Painting 12"></figure>
+        <figure><img src="images/paint_13.jpeg" alt="Painting 13"></figure>
+        <figure><img src="images/paint_14.jpeg" alt="Painting 14"></figure>
       </div>
     </div>
   </section>
 
-  <!-- CUSTOM / CTA (белый) + «more of my art» -->
-  <section id="custom" class="panel panel--white">
-    <div class="container" style="display:grid; grid-template-columns:1.1fr .9fr; gap:24px; align-items:center;">
-      <div>
-        <h2 class="section-title">Ready to commission?</h2>
-        <p class="section-sub">Tell me about your idea — portrait, illustration, or a painting for your space.</p>
-        <div class="btn-row" style="justify-content:flex-start;">
-          <a class="btn btn-primary" href="contact.html">Request custom art</a>
-          <a class="btn" style="background:#000; color:#fff;"
-             href="https://www.youtube.com/@dariART2002" target="_blank" rel="noopener">
-            More of my art
-          </a>
-        </div>
+  <!-- WATERCOLOR -->
+  <section>
+    <div class="section-inner">
+      <h2>Watercolor</h2>
+      <p class="lead">Light, airy stories told in color and paper texture.</p>
+      <div class="strip" aria-label="Watercolor carousel">
+        <figure><img src="images/wc_01.jpeg" alt="Watercolor 01"></figure>
+        <figure><img src="images/wc_02.jpeg" alt="Watercolor 02"></figure>
+        <figure><img src="images/wc_03.jpeg" alt="Watercolor 03"></figure>
+        <figure><img src="images/wc_04.jpeg" alt="Watercolor 04"></figure>
+        <figure><img src="images/wc_05.jpeg" alt="Watercolor 05"></figure>
+        <figure><img src="images/wc_06.jpeg" alt="Watercolor 06"></figure>
+        <figure><img src="images/wc_07.jpeg" alt="Watercolor 07"></figure>
+        <figure><img src="images/wc_08.jpeg" alt="Watercolor 08"></figure>
+        <figure><img src="images/wc_09.jpeg" alt="Watercolor 09"></figure>
+        <figure><img src="images/wc_10.jpeg" alt="Watercolor 10"></figure>
+        <figure><img src="images/wc_11.jpeg" alt="Watercolor 11"></figure>
       </div>
-      <figure class="media">
-        <img src="images/more_art.jpg" alt="Artist portrait">
-      </figure>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer panel">
-    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-      <span>© 2025 Daria Sirchenko | All rights reserved</span>
-      <div style="display:flex; gap:14px;">
-        <a href="https://www.instagram.com/wild_and_free_sisters" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
-        <a href="https://www.youtube.com/@dariART2002" target="_blank" rel="noopener" aria-label="YouTube">▶️</a>
+  <!-- PENCIL PORTRAITS -->
+  <section>
+    <div class="section-inner">
+      <h2>Pencil Portraits</h2>
+      <p class="lead">Quiet graphite lines that keep a living gaze.</p>
+      <div class="strip" aria-label="Pencil portraits carousel">
+        <figure><img src="images/pastushka.jpeg" alt="Portrait — пастушка"></figure>
+        <figure><img src="images/жен.jpeg" alt="Portrait — жен"></figure>
+        <figure><img src="images/наст.jpeg" alt="Portrait — наст"></figure>
+        <figure><img src="images/джигит.jpeg" alt="Portrait — джигит"></figure>
       </div>
     </div>
+  </section>
+
+  <!-- БЕЛЫЙ НИЗ: CTA -->
+  <section class="white">
+    <div class="section-inner cta">
+      <h3>Ready to commission?</h3>
+      <div class="actions">
+        <a class="btn btn-primary" href="contact.html">Request custom art</a>
+        <a class="btn" style="background:#eee;color:#222" href="my-art.html">More of my art</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Daria Sirchenko · All rights reserved
   </footer>
-
 </body>
 </html>
+
